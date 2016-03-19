@@ -1,0 +1,4 @@
+ComProtocoles/bin/*
+MainSystem/bin/*
+*.project
+*.classpath
