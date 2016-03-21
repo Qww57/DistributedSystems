@@ -1,5 +1,3 @@
-
-package tcpserver;
 import java.io.*; 
 import java.net.*;
 
