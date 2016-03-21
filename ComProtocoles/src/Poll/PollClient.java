@@ -20,7 +20,7 @@ public class PollClient {
 	
 	/* Fields linked to the POLL protocol */
 	private static boolean keepGoing = true;
-	private static int msTimeOut = 20;
+	private static int msTimeOut = 5000;
 	
 	public static void main(String args[]){
 		

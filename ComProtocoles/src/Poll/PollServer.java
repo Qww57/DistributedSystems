@@ -2,18 +2,17 @@ package Poll;
 
 import java.io.*;
 import java.net.*;
-import java.util.*;
+import utils.*;
 
 /*
  * Server receiving the poll request and answering correctly
  */
 public class PollServer{
 	
-	private static int portNumber = 9000;
+	/* Common port number called to get a specific port */
+	private static int portNumber = 9050;
 	
 	private static ServerSocket listenSocket = null;
-	
-	private static Map<String, Integer> sequenceNumbers = new HashMap<String, Integer>();;
 		
 	public static void main (String args[]){
 		try {
@@ -63,15 +62,11 @@ class EchoThread extends Thread{
 			String data = in.readUTF();
 					
 			if (data.contains("POLL")){
-				/* TODO: add function checking for opened port number 
-				 * and returning a new port number */
-				String newPortNumber = "newPort";
+				String newPortNumber = PortScanner.getOneFreePort(8000, 8020).toString();
 				out.writeUTF(newPortNumber);
 			}
 			if (data.contains("REPT")){
-				/* TODO: add function checking for opened port number 
-				 * and returning a new port number */
-				String newPortNumber = "8005";
+				String newPortNumber = PortScanner.getOneFreePort(8000, 8020).toString();
 				out.writeUTF(newPortNumber);
 			}
 			
