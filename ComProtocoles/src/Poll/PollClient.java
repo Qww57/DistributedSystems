@@ -30,7 +30,7 @@ public class PollClient {
 		
 		try{
 			sendPoll();
-			while (keepGoing){
+			while (keepGoing){ 
 				loop();
 			}			
 		} catch(SocketException e){
