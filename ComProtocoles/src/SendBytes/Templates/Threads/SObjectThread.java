@@ -1,26 +1,16 @@
-package SendBytes;
+package SendBytes.Templates.Threads;
 
-import java.io.*;
-import java.net.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
+import java.io.IOException;
+import java.net.Socket;
 
+import SendBytes.SObject;
 import utils.ConvertBytes;
 
-public class Server {
-	public static void main (String args[]){
-		try {
-			int serverPort = 7000;
-			ServerSocket listenSocket = new ServerSocket(serverPort);
-			while(true){
-				Socket clientSocket = listenSocket.accept();
-				SObjectThread c = new SObjectThread(clientSocket);
-			}
-		} catch (IOException e){
-			System.out.println("Listen: " + e.getMessage());
-		}
-	}
-}
 
-class SObjectThread extends Thread{
+public class SObjectThread extends Thread {
 	DataInputStream in;
 	DataOutputStream out;
 	Socket clientSocket;

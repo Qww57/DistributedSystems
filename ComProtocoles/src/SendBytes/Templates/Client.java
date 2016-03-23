@@ -1,4 +1,4 @@
-package SendBytes;
+package SendBytes.Templates;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -70,11 +70,9 @@ public class Client {
 	
 	/* Public methods */
 	
-	private Object receivedObject = null;
-	
 	public Object sendPollRequest() throws Exception{
 		
-		this.receivedObject = null;
+		this.object = null;
 		
 		this.keepGoing = true;
 		
@@ -96,7 +94,7 @@ public class Client {
 			        public void run() {
 			        	try {
 							if (verification(data)){
-								receivedObject = data;
+								object = data;
 							}
 						} catch (Exception e) {
 							System.out.println("Exception: " + e.getMessage());
@@ -109,7 +107,7 @@ public class Client {
 		    finalTime = (System.currentTimeMillis() - startTime);
 		    print(finalTime, "end of main method! (ms)");
 		}
-		return receivedObject;
+		return object;
 	}
 	
 	public void sendObject() throws Exception{
