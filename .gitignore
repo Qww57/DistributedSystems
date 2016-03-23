@@ -4,3 +4,4 @@ MainSystem/bin/*
 *.classpath
 ComProtocoles/src/Poll/PollClientWithSeq.java
 ComProtocoles/src/Poll/PollServerWithSeq.java
+ComProtocols/*
