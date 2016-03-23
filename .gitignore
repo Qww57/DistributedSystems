@@ -8,3 +8,5 @@ MainSystem/lib/apache-ignite-1.5.0-b1-src/*
 MainSystem/lib/gridgrain/*
 MainSystem/lib/gridgrain_installation_tutorial.txt
 MainSystem/lib/apache-ignite-1.5.0-b1-src.zip
+ComProtocols/*
+
