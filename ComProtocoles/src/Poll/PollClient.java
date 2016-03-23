@@ -5,7 +5,8 @@ import java.net.*;
 import java.util.concurrent.*;
 import utils.TimeLimitedCodeBlock;
 
-/* The one sending the poll request
+/* 
+ * The one sending the poll request
  */
 @SuppressWarnings("boxing")
 public class PollClient {
