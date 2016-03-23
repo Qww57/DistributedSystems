@@ -11,9 +11,10 @@ public class TreatmentDTO implements Serializable {
 	
 	private byte[] treatment;
 	
-	public TreatmentDTO(int treatmentID) {
+	public TreatmentDTO(int treatmentID, byte[] treatment) {
 		super();
 		this.treatmentID = treatmentID;
+		this.treatment = treatment;
 	}
 	
 	public int getTreatmentID() {
@@ -22,5 +23,13 @@ public class TreatmentDTO implements Serializable {
 
 	public void setTreatmentID(int treatmentID) {
 		this.treatmentID = treatmentID;
+	}
+
+	public byte[] getTreatment() {
+		return treatment;
+	}
+
+	public void setTreatment(byte[] treatment) {
+		this.treatment = treatment;
 	}
 }

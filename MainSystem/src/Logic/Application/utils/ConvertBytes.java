@@ -10,7 +10,7 @@ import Logic.Application.ResourceDTO;
 
 public class ConvertBytes {
 	
-	public byte[] ConvertToBytes(Object object){
+	public static byte[] ConvertToBytes(Object object){
 		
 		byte[] yourBytes = null;
 		
@@ -43,7 +43,7 @@ public class ConvertBytes {
 		return yourBytes;
 	}
 	
-	public Object ConvertFromBytes(byte[] bytes){
+	public static Object ConvertFromBytes(byte[] bytes){
 		
 		Object o = new Object();
 		ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
