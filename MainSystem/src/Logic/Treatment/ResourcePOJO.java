@@ -12,6 +12,8 @@ public class ResourcePOJO {
 	
 	private boolean computationDone;
 	
+	private boolean deleted;
+	
 	private List<Integer> primeNbs;
 	
 	private int treatmentId;
@@ -31,6 +33,23 @@ public class ResourcePOJO {
 		this.computationDone = computationDone;
 		this.primeNbs = primeNbs;
 		this.treatmentId = treatmentId;
+		this.assignedSubsystem = assignedSubsystem;
+		this.deleted = false;
+	}
+
+	public boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public int getAssignedSubsystem() {
+		return assignedSubsystem;
+	}
+
+	public void setAssignedSubsystem(int assignedSubsystem) {
 		this.assignedSubsystem = assignedSubsystem;
 	}
 

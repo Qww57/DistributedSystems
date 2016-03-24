@@ -4,12 +4,23 @@ public class TreatementPOJO {
 	
 	private int treatmentID;
 	
+	private boolean deleted;
+	
 	private byte[] treatment;
 	
 	public TreatementPOJO(int treatmentID, byte[] treatment) {
 		super();
 		this.treatmentID = treatmentID;
 		this.treatment = treatment;
+		this.deleted = false;
+	}
+	
+	public boolean isDeleted(){
+		return deleted;
+	}
+	
+	public void setDeleted(boolean deleted){
+		this.deleted = deleted;
 	}
 	
 	public int getTreatmentID() {
