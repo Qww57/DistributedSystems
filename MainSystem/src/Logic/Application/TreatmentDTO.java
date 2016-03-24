@@ -1,9 +1,6 @@
 package Logic.Application;
 
-import java.io.Serializable;
-import java.util.*;
-
-public class TreatmentDTO implements Serializable {
+public class TreatmentDTO extends AbstractDTO {
 	
 	private static final long serialVersionUID = -8951045129972008754L;
 

@@ -10,9 +10,9 @@ import java.util.List;
  * @author Quentin
  *
  */
-public class ResourceDTO implements Serializable {
+public class ResourceDTO extends AbstractDTO {
 
-	private static final long serialVersionUID = 3241280983255483803L;
+	private static final long serialVersionUID = 487595575463452951L;
 
 	private int resourceId;
 	

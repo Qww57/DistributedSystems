@@ -1,9 +1,17 @@
-package Logic.Application;
+package junit;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Example of treatment method that can be used
+ * 
+ * Just there for development purposes, should be sent from the client
+ * 
+ * @author Quentin
+ *
+ */
 public class TreatmentMethod implements Serializable {
 		
 	private static final long serialVersionUID = 857218763908397452L;

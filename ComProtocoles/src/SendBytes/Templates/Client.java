@@ -10,11 +10,17 @@ import java.util.concurrent.TimeoutException;
 import utils.ConvertBytes;
 import utils.TimeLimitedCodeBlock;
 
+/**
+ * Class implementing a template for a TCP Client with POLL protocol
+ * 
+ * @author Quentin
+ *
+ */
 @SuppressWarnings({"hiding", "boxing", "static-access"})
 public class Client {
 
 	private int id;
-	private int serverPort = -1;
+	private int serverPort;
 	private String host = null;
 	private static int msTimeOut = 5000;
 	private Socket s = null;
