@@ -7,5 +7,5 @@ package Logic.Treatment;
  *
  */
 public class ComputationCollecter {
-
+	// TODO
 }

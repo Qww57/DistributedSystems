@@ -12,3 +12,4 @@ ComProtocols/*
 */nbproject/*
 *.mf
 *.xml
+*/.settings/*

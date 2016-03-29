@@ -3,7 +3,8 @@ import java.net.*;
 
 class TCPClient {       
     private static Socket s;
-    private static DataInputStream in = null;
+    @SuppressWarnings("unused")
+	private static DataInputStream in = null;
     private static DataOutputStream out = null;
     
     public static void main(String args[]) throws IOException, SocketException {   

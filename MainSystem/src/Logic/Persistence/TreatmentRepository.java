@@ -6,33 +6,47 @@ import static com.wagnerandade.coollection.Coollection.from;
 import java.util.ArrayList;
 import java.util.List;
 
-import Logic.Treatment.TreatementPOJO;
+import Logic.Treatment.TreatmentPOJO;
 
 public class TreatmentRepository {
-private static List<TreatementPOJO> treatmentDb= new ArrayList<TreatementPOJO>();
+
+	private static List<TreatmentPOJO> treatmentDb= new ArrayList<TreatmentPOJO>();
 	
-	public static TreatementPOJO getTreatmentById(Integer id) throws Exception{
-		List<TreatementPOJO> results = from(treatmentDb)
+	@SuppressWarnings("boxing")
+	public void addTreatment(TreatmentPOJO treatment){
+		Integer id = treatment.getTreatmentID();
+		
+		if (getTreatmentById(id) != null){
+			System.out.println("Warning: treatment " + id + " is already in the database");
+		}
+		treatmentDb.add(treatment);
+	}
+
+	public static TreatmentPOJO getTreatmentById(Integer id){
+		List<TreatmentPOJO> results = from(treatmentDb)
 				.where("treatmentID", eq(id))
 				.and("deleted", eq(Boolean.FALSE)).all();
 		
 		if (results.size() == 0){
-			throw new Exception("No resources found for the id: " + id);
+			System.out.println("Warning: treatment " + id + " is not in the database");
+			return null;
 		}
 		else if (results.size() > 1){
-			throw new Exception("Many resources found for the id: " + id);
+			System.out.println("Warning: many treatments with " + id + " are found in the database");
+			return results.get(0);
 		}
 		else {
 			return results.get(0);
 		}
 	}
 	
-	public static void deleteTreatmentById(Integer id) throws Exception{
-		try {
-			TreatementPOJO treatment = getTreatmentById(id);
+	public static void deleteTreatmentById(Integer id){
+		TreatmentPOJO treatment = getTreatmentById(id);
+		if (treatment != null){
 			treatment.setDeleted(true);
-		} catch (Exception e) {
-			throw new Exception("Unable to deleted :" + e.getMessage());
-		}
+		} 
+		else {
+			System.out.println("Warning: treatment " + id + " was not in the database and could not be deleted");
+		}	
 	}
 }

@@ -76,6 +76,7 @@ public class ConvertBytes {
 		return o;
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void testConvertBytes(){
 		ResourceDTO resourceDTO = new ResourceDTO(0, 0, 20, 50, false, null);

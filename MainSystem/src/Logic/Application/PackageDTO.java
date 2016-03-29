@@ -1,6 +1,5 @@
 package Logic.Application;
 
-import java.io.Serializable;
 import java.util.*;
 
 /**

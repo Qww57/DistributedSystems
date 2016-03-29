@@ -31,7 +31,7 @@ public class CommunicationController {
 		return sendingQueue;
 	}
 
-	public void addToSendingQueue(AbstractDTO newDTO) {
+	public static void addToSendingQueue(AbstractDTO newDTO) {
 		sendingQueue.add(newDTO);
 	}
 	

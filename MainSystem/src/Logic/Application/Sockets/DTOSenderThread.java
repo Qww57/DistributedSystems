@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.net.Socket;
 
 import Logic.Application.AbstractDTO;
-import Logic.Application.PackageDTO;
 import Logic.Application.utils.ConvertBytes;
 
 

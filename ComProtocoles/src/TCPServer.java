@@ -10,7 +10,8 @@ class TCPServer {
         boolean check = true;
              
         try{   
-            ServerSocket welcomeSocket = new ServerSocket(1500);         
+            @SuppressWarnings("resource")
+			ServerSocket welcomeSocket = new ServerSocket(1500);         
             Socket connectionSocket = welcomeSocket.accept();             
             BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
             DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());             

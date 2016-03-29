@@ -1,6 +1,5 @@
 package Logic.Application;
 
-import java.io.Serializable;
 import java.util.List;
 /**
  * DTO object to be send to the subsystems using TCP

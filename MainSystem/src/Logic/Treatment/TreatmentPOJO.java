@@ -1,6 +1,6 @@
 package Logic.Treatment;
 
-public class TreatementPOJO {
+public class TreatmentPOJO {
 	
 	private int treatmentID;
 	
@@ -8,7 +8,7 @@ public class TreatementPOJO {
 	
 	private byte[] treatment;
 	
-	public TreatementPOJO(int treatmentID, byte[] treatment) {
+	public TreatmentPOJO(int treatmentID, byte[] treatment) {
 		super();
 		this.treatmentID = treatmentID;
 		this.treatment = treatment;

@@ -20,6 +20,7 @@ public class PollServer{
 			listenSocket = new ServerSocket(serverPort);
 			while(true){
 				Socket clientSocket = listenSocket.accept();
+				@SuppressWarnings("unused")
 				EchoThread c = new EchoThread(clientSocket);
 			}
 		} catch (IOException e){

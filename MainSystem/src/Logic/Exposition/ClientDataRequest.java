@@ -12,4 +12,23 @@ package Logic.Exposition;
  */
 public class ClientDataRequest {
 
+	private byte[] treatment;
+	
+	private byte[] resources;
+
+	public byte[] getTreatment() {
+		return treatment;
+	}
+
+	public void setTreatment(byte[] treatment) {
+		this.treatment = treatment;
+	}
+
+	public byte[] getResources() {
+		return resources;
+	}
+
+	public void setResources(byte[] resources) {
+		this.resources = resources;
+	}
 }

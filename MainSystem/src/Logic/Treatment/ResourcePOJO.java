@@ -116,4 +116,9 @@ public class ResourcePOJO {
 		return true;
 	}
 	
+	public void printResource(){
+		System.out.println("Resource " + this.resourceId 
+				+ " - Treatment " + this.treatmentId 
+				+ " from " + this.lowerLimite + " to " + this.upperLimite);
+	}
 }
