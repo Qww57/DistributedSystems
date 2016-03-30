@@ -14,7 +14,9 @@ public class PojoDtoMapper {
 				input.getLowerLimite(), 
 				input.getUpperLimite(),  
 				input.isComputationDone(), 
-				input.getPrimeNbs());
+				input.getPrimeNbs(),
+				input.getPackageId(),
+				input.getAssignedSubsystem());
 		return output;
 	}
 	
@@ -26,21 +28,23 @@ public class PojoDtoMapper {
 				input.getUpperLimite(),  
 				input.isComputationDone(), 
 				input.getPrimeNbs(), 
-				-1);
+				new Integer(-1));
 		return output;
 	}
 	
 	public static TreatmentPOJO treatmentPOJO(TreatmentDTO input){
 		TreatmentPOJO output = new TreatmentPOJO(
 				input.getTreatmentID(), 
-				input.getTreatment());
+				input.getTreatment(),
+				input.getPackageIds());
 		return output;
 	}
 	
 	public static TreatmentDTO treatmentDTO(TreatmentPOJO input){
 		TreatmentDTO output = new TreatmentDTO(
-				input.getTreatmentID(), 
-				input.getTreatment());
+				input.getTreatmentID(),
+				input.getTreatment(),
+				input.getPackagesId());
 		return output;
 	}
 }

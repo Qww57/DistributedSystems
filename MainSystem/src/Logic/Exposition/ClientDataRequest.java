@@ -14,21 +14,26 @@ public class ClientDataRequest {
 
 	private byte[] treatment;
 	
-	private byte[] resources;
+	private Integer minRresources;
+	
+	private Integer maxResources;
+	
+	public ClientDataRequest(byte[] treatment, Integer minRresources, Integer maxResources) {
+		super();
+		this.treatment = treatment;
+		this.minRresources = minRresources;
+		this.maxResources = maxResources;
+	}
 
 	public byte[] getTreatment() {
 		return treatment;
 	}
 
-	public void setTreatment(byte[] treatment) {
-		this.treatment = treatment;
+	public Integer getMinResources() {
+		return minRresources;
 	}
-
-	public byte[] getResources() {
-		return resources;
-	}
-
-	public void setResources(byte[] resources) {
-		this.resources = resources;
+	
+	public Integer getMaxResources() {
+		return maxResources;
 	}
 }

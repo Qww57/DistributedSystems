@@ -18,19 +18,21 @@ import Logic.Treatment.ResourcePOJO;
 @SuppressWarnings("boxing")
 public class ResourceRepository {
 	
-	private static List<ResourcePOJO> resourceDb= new ArrayList<ResourcePOJO>();
+	private static List<ResourcePOJO> resourceDb = new ArrayList<ResourcePOJO>();
 	
 	public void add(ResourcePOJO resource){
-		int id = resource.getResourceId();
-		
-		if (getResourceById(id) == null){
-			System.out.println("Warning: resource " + id + " is already in the database");
-		}
-		
-		resourceDb.get(id);
+		resourceDb.add(resource);
 	}
 	
-	public static ResourcePOJO getResourceById(Integer id){
+	public static void update(ResourcePOJO resource){
+		ResourcePOJO resDb = getResourceById(resource.getResourceId());
+		resourceDb.remove(resDb);
+		
+		resourceDb.add(resource);
+	}
+	
+	public static ResourcePOJO getResourceById(String id){
+		System.out.println("Looking for resource: " + id);
 		List<ResourcePOJO> results = from(resourceDb)
 				.where("resourceId", eq(id))
 				.all();
@@ -48,7 +50,7 @@ public class ResourceRepository {
 		}
 	}
 	
-	public static List<ResourcePOJO> getAllResourcesByTreatment(Integer treatmentId){
+	public static List<ResourcePOJO> getAllResourcesByTreatment(String treatmentId){
 		List<ResourcePOJO> results = from(resourceDb).where("treatmentId", eq(treatmentId))
 				.orderBy("lowerLimite", Order.ASC).all();
 		if (results.size() == 0){
@@ -106,7 +108,7 @@ public class ResourceRepository {
 		return results;
 	}
 
-	public void deleteResourcesByTreatment(Integer treatmentId){
+	public void deleteResourcesByTreatment(String treatmentId){
 		
 		List<ResourcePOJO> results = from(resourceDb)
 				.where("treatmentId", eq(treatmentId))

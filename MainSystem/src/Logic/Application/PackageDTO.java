@@ -2,6 +2,8 @@ package Logic.Application;
 
 import java.util.*;
 
+import Logic.Application.utils.IdGenerator;
+
 /**
  * Pacakage to send to the subsystems
  * 
@@ -15,11 +17,14 @@ public class PackageDTO extends AbstractDTO {
 	private List<ResourceDTO> resources = new ArrayList<>();
 	
 	private TreatmentDTO treatment;
+	
+	private String packageId;
 
 	public PackageDTO(List<ResourceDTO> resources, TreatmentDTO treatment) {
 		super();
 		this.resources = resources;
 		this.treatment = treatment;
+		this.packageId = IdGenerator.packageDTOId();
 	}
 	
 	public TreatmentDTO getTreatment() {
@@ -36,5 +41,13 @@ public class PackageDTO extends AbstractDTO {
 
 	public void setResources(List<ResourceDTO> resources) {
 		this.resources = resources;
+	}
+
+	public String getPackageId() {
+		return packageId;
+	}
+
+	public void setPackageId(String packageId) {
+		this.packageId = packageId;
 	}
 }

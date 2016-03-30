@@ -14,7 +14,7 @@ public class TreatmentRepository {
 	
 	@SuppressWarnings("boxing")
 	public void addTreatment(TreatmentPOJO treatment){
-		Integer id = treatment.getTreatmentID();
+		String id = treatment.getTreatmentID();
 		
 		if (getTreatmentById(id) != null){
 			System.out.println("Warning: treatment " + id + " is already in the database");
@@ -22,7 +22,7 @@ public class TreatmentRepository {
 		treatmentDb.add(treatment);
 	}
 
-	public static TreatmentPOJO getTreatmentById(Integer id){
+	public static TreatmentPOJO getTreatmentById(String id){
 		List<TreatmentPOJO> results = from(treatmentDb)
 				.where("treatmentID", eq(id))
 				.and("deleted", eq(Boolean.FALSE)).all();
@@ -40,7 +40,7 @@ public class TreatmentRepository {
 		}
 	}
 	
-	public static void deleteTreatmentById(Integer id){
+	public static void deleteTreatmentById(String id){
 		TreatmentPOJO treatment = getTreatmentById(id);
 		if (treatment != null){
 			treatment.setDeleted(true);

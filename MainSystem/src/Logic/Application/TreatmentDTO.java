@@ -1,24 +1,39 @@
 package Logic.Application;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Logic.Application.utils.IdGenerator;
+
 public class TreatmentDTO extends AbstractDTO {
 	
 	private static final long serialVersionUID = -8951045129972008754L;
 
-	private int treatmentID;
+	private String treatmentID;
 	
 	private byte[] treatment;
 	
-	public TreatmentDTO(int treatmentID, byte[] treatment) {
+	private List<String> packageIds;
+	
+	public TreatmentDTO(byte[] treatment) {
 		super();
-		this.treatmentID = treatmentID;
+		this.treatmentID = IdGenerator.treatmentDTOId();
 		this.treatment = treatment;
+		this.setPackageIds(new ArrayList<String>());
 	}
 	
-	public int getTreatmentID() {
+	public TreatmentDTO(String treatmentId, byte[] treatment, List<String> packageIds) {
+		super();
+		this.treatmentID = treatmentId;
+		this.treatment = treatment;
+		this.packageIds = packageIds;
+	}
+	
+	public String getTreatmentID() {
 		return treatmentID;
 	}
 
-	public void setTreatmentID(int treatmentID) {
+	public void setTreatmentID(String treatmentID) {
 		this.treatmentID = treatmentID;
 	}
 
@@ -28,5 +43,13 @@ public class TreatmentDTO extends AbstractDTO {
 
 	public void setTreatment(byte[] treatment) {
 		this.treatment = treatment;
+	}
+
+	public List<String> getPackageIds() {
+		return packageIds;
+	}
+
+	public void setPackageIds(List<String> packageIds) {
+		this.packageIds = packageIds;
 	}
 }

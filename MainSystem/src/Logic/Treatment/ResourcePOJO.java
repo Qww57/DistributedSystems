@@ -1,31 +1,49 @@
 package Logic.Treatment;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import Logic.Application.utils.IdGenerator;
 
 public class ResourcePOJO {
 	
-	private int resourceId;
+	private String resourceId;
 	
-	private int upperLimite;
+	private Integer upperLimite;
 	
-	private int lowerLimite;
+	private Integer lowerLimite;
 	
-	private boolean computationDone;
+	private Boolean computationDone;
 	
-	private boolean deleted;
+	private Boolean deleted;
 	
 	private List<Integer> primeNbs;
 	
-	private int treatmentId;
+	private String treatmentId;
 	
-	private int assignedSubsystem;
+	private Integer assignedSubsystem;
+	
+	private String packageId;
 		
 	/* Assign value -1 to assigned subsystems when creating the object */
 	
-	public ResourcePOJO(int treatmentId, int resourceId, 
-			int lowerLimite, int upperLimite, 
-			boolean computationDone,
-			List<Integer> primeNbs, int assignedSubsystem) {
+	public ResourcePOJO(String treatmentId, 
+			Integer lowerLimite, Integer upperLimite) {
+		super();
+		this.resourceId = IdGenerator.resourcePOJOId();
+		this.upperLimite = upperLimite;
+		this.lowerLimite = lowerLimite;
+		this.computationDone = Boolean.FALSE;
+		this.primeNbs = new ArrayList<Integer>();
+		this.treatmentId = treatmentId;
+		this.assignedSubsystem = null;
+		this.deleted = Boolean.FALSE;
+	}
+	
+	public ResourcePOJO(String treatmentId, String resourceId, 
+			Integer lowerLimite, Integer upperLimite, 
+			Boolean computationDone,
+			List<Integer> primeNbs, Integer assignedSubsystem) {
 		super();
 		this.resourceId = resourceId;
 		this.upperLimite = upperLimite;
@@ -34,54 +52,54 @@ public class ResourcePOJO {
 		this.primeNbs = primeNbs;
 		this.treatmentId = treatmentId;
 		this.assignedSubsystem = assignedSubsystem;
-		this.deleted = false;
+		this.deleted = Boolean.FALSE;
 	}
 
-	public boolean getDeleted() {
+	public Boolean getDeleted() {
 		return deleted;
 	}
 
-	public void setDeleted(boolean deleted) {
+	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
 
-	public int getAssignedSubsystem() {
+	public Integer getAssignedSubsystem() {
 		return assignedSubsystem;
 	}
 
-	public void setAssignedSubsystem(int assignedSubsystem) {
+	public void setAssignedSubsystem(Integer assignedSubsystem) {
 		this.assignedSubsystem = assignedSubsystem;
 	}
 
-	public int getResourceId(){
+	public String getResourceId(){
 		return resourceId;
 	}
 	
-	public void setResourceId(int resourceId) {
+	public void setResourceId(String resourceId) {
 		this.resourceId = resourceId;
 	}
 
-	public int getUpperLimite(){
+	public Integer getUpperLimite(){
 		return upperLimite;
 	}
 	
-	public void setUpperLimite(int upperLimite) {
+	public void setUpperLimite(Integer upperLimite) {
 		this.upperLimite = upperLimite;
 	}
 
-	public int getLowerLimite() {
+	public Integer getLowerLimite() {
 		return lowerLimite;
 	}
 
-	public void setLowerLimite(int lowerLimite) {
+	public void setLowerLimite(Integer lowerLimite) {
 		this.lowerLimite = lowerLimite;
 	}
 
-	public boolean isComputationDone() {
+	public Boolean isComputationDone() {
 		return computationDone;
 	}
 
-	public void setComputationDone(boolean computationDone) {
+	public void setComputationDone(Boolean computationDone) {
 		this.computationDone = computationDone;
 	}
 
@@ -93,27 +111,35 @@ public class ResourcePOJO {
 		this.primeNbs = primeNbs;
 	}
 
-	public int getTreatmentId() {
+	public String getTreatmentId() {
 		return treatmentId;
 	}
 
-	public void setTreatmentId(int treatmentId) {
+	public void setTreatmentId(String treatmentId) {
 		this.treatmentId = treatmentId;
 	}
 	
-	/* TODO add and create customs exceptions to throw */
-	public boolean validateResource(){
-		if (this.lowerLimite < this.upperLimite){
-			return true;
-		}
-		return false;
+	public String getPackageId() {
+		return packageId;
+	}
+
+	public void setPackageId(String packageId) {
+		this.packageId = packageId;
 	}
 	
-	public boolean validateBeforeSending(){
-		if (!this.validateResource() || this.assignedSubsystem == -1){
-			return false;
+	/* TODO add and create customs exceptions to throw */
+	public Boolean validateResource(){
+		if (this.lowerLimite.intValue() < this.upperLimite.intValue()){
+			return Boolean.TRUE;
 		}
-		return true;
+		return Boolean.FALSE;
+	}
+	
+	public Boolean validateBeforeSending(){
+		if (!this.validateResource().equals(Boolean.TRUE) || this.assignedSubsystem.intValue() == -1){
+			return Boolean.FALSE;
+		}
+		return Boolean.TRUE;
 	}
 	
 	public void printResource(){

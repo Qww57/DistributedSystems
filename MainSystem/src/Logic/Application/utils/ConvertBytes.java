@@ -79,7 +79,7 @@ public class ConvertBytes {
 	@SuppressWarnings("static-access")
 	@Test
 	public void testConvertBytes(){
-		ResourceDTO resourceDTO = new ResourceDTO(0, 0, 20, 50, false, null);
+		ResourceDTO resourceDTO = new ResourceDTO("treat", new Integer(20), new Integer(50));
 	
 		byte[] bytes = this.ConvertToBytes(resourceDTO);
 		System.out.println(bytes);
@@ -88,7 +88,7 @@ public class ConvertBytes {
 		ResourceDTO resource = (ResourceDTO) object;
 		System.out.println(resource);
 
-		assertEquals(50, resource.getUpperLimite());
+		assertEquals(50, resource.getUpperLimite().intValue());
 	}
 }
 

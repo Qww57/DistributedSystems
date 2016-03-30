@@ -1,6 +1,9 @@
 package Logic.Application;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import Logic.Application.utils.IdGenerator;
 /**
  * DTO object to be send to the subsystems using TCP
  * 
@@ -13,58 +16,77 @@ public class ResourceDTO extends AbstractDTO {
 
 	private static final long serialVersionUID = 487595575463452951L;
 
-	private int resourceId;
+	private String resourceId;
 	
-	private int treatmentId;
+	private String treatmentId;
 	
-	private int upperLimite;
+	private String packageId;
 	
-	private int lowerLimite;
+	private Integer upperLimite;
+	
+	private Integer lowerLimite;
 
-	private boolean computationDone;
+	private Boolean computationDone;
 	
 	private List<Integer> primeNbs;
 	
-	public ResourceDTO(int treatmentId, int resourceId, int lowerLimite, int upperLimite, boolean computationDone,
-			List<Integer> primeNbs) {
+	private Integer assignedSubSystem;
+	
+	public ResourceDTO(String treatmentId, Integer lowerLimite, Integer upperLimite) {
+		super();
+		this.treatmentId = treatmentId;
+		this.resourceId = IdGenerator.resourceDTOId();
+		this.upperLimite = upperLimite;
+		this.lowerLimite = lowerLimite;
+		this.computationDone = Boolean.FALSE;
+		this.primeNbs = new ArrayList<Integer>();	
+		this.setAssignedSubSystem(null);
+	}
+	
+	public ResourceDTO(String treatmentId, String resourceId, 
+			Integer lowerLimite, Integer upperLimite, 
+			Boolean computationDone, List<Integer> primeNbs,
+			String packageId, Integer assignedSubSystem) {
 		super();
 		this.resourceId = resourceId;
+		this.treatmentId = treatmentId;
+		this.setPackageId(packageId);
 		this.upperLimite = upperLimite;
 		this.lowerLimite = lowerLimite;
 		this.computationDone = computationDone;
 		this.primeNbs = primeNbs;
-		this.treatmentId = treatmentId;
+		this.setAssignedSubSystem(assignedSubSystem);
 	}
 	
-	public int getResourceId(){
+	public String getResourceId(){
 		return resourceId;
 	}
 	
-	public void setResourceId(int resourceId) {
+	public void setResourceId(String resourceId) {
 		this.resourceId = resourceId;
 	}
 
-	public int getUpperLimite(){
+	public Integer getUpperLimite(){
 		return upperLimite;
 	}
 	
-	public void setUpperLimite(int upperLimite) {
+	public void setUpperLimite(Integer upperLimite) {
 		this.upperLimite = upperLimite;
 	}
 
-	public int getLowerLimite() {
+	public Integer getLowerLimite() {
 		return lowerLimite;
 	}
 
-	public void setLowerLimite(int lowerLimite) {
+	public void setLowerLimite(Integer lowerLimite) {
 		this.lowerLimite = lowerLimite;
 	}
 
-	public boolean isComputationDone() {
+	public Boolean isComputationDone() {
 		return computationDone;
 	}
 
-	public void setComputationDone(boolean computationDone) {
+	public void setComputationDone(Boolean computationDone) {
 		this.computationDone = computationDone;
 	}
 
@@ -76,11 +98,27 @@ public class ResourceDTO extends AbstractDTO {
 		this.primeNbs = primeNbs;
 	}
 
-	public int getTreatmentId() {
+	public String getTreatmentId() {
 		return treatmentId;
 	}
 
-	public void setTreatmentId(int treatmentId) {
+	public void setTreatmentId(String treatmentId) {
 		this.treatmentId = treatmentId;
+	}
+
+	public Integer getAssignedSubSystem() {
+		return assignedSubSystem;
+	}
+
+	public void setAssignedSubSystem(Integer assignedSubSystem) {
+		this.assignedSubSystem = assignedSubSystem;
+	}
+
+	public String getPackageId() {
+		return packageId;
+	}
+
+	public void setPackageId(String packageId) {
+		this.packageId = packageId;
 	}
 }
