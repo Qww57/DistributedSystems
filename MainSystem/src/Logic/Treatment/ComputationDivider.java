@@ -9,11 +9,11 @@ import Logic.Application.ResourceDTO;
 import Logic.Application.TreatmentDTO;
 import Logic.Application.Mapping.ClientPojoMapper;
 import Logic.Application.Mapping.PojoDtoMapper;
-import Logic.Application.utils.IdGenerator;
 import Logic.Exposition.ClientDataRequest;
 import Logic.Persistence.ResourceRepository;
 import Logic.Persistence.TreatmentRepository;
 import utils.Couple;
+import utils.IdGenerator;
 
 /**
  * Class used to split computations and assign each one to one subsystem
@@ -25,15 +25,16 @@ public class ComputationDivider {
 	
 	// Number of packages we want to have at the end
 	private int nbPackages;
+	private int nbElementsPerPackage;
 	
 	private static ClientPojoMapper clientPojoMapper;
 	private static PojoDtoMapper pojoDtoMapper;
 	private static TreatmentRepository treatmentRepo;
 	private static ResourceRepository resourceRepo;
 	
-	public ComputationDivider(int packages){
+	public ComputationDivider(int packages, int elementsPerPackage){
 		nbPackages = packages;
-		
+		nbElementsPerPackage = elementsPerPackage;
 		clientPojoMapper = new ClientPojoMapper();
 		pojoDtoMapper = new PojoDtoMapper();
 		treatmentRepo = new TreatmentRepository();
@@ -78,16 +79,20 @@ public class ComputationDivider {
 			// Creating DTO packages 
 			Collections.shuffle(resourcesDTO);
 			int index = 0;
+		
+			int nbElements = 0;
+			if (resourcesDTO.size() % nbPackages == 0)
+				nbElements = resourcesDTO.size() / nbPackages;
+			else
+				nbElements = resourcesDTO.size() / nbPackages + 1;
 			
-			// FIXME
 			for (int i = 0; i < nbPackages; i++){ 
 				List<ResourceDTO> newResource = new ArrayList<ResourceDTO>();
 				int j =0;
 				
 				while(j < nbElements){
-					System.out.println("j: " + j);
-					System.out.println("index: " + index);
-					newResource.add(resourcesDTO.get(index));
+					if (index < resourcesDTO.size())
+						newResource.add(resourcesDTO.get(index));
 					j++;
 					index++;
 				} 
@@ -95,7 +100,7 @@ public class ComputationDivider {
 				PackageDTO newPackage = new PackageDTO(newResource, treatmentDTO);
 				
 				if (!validate(newPackage)){
-					throw new Exception("TODO"); //TODO
+					throw new Exception("Cannot validate the package: " + newPackage.getPackageId()); //TODO
 				}
 				packages.add(newPackage);
 			}		
@@ -114,26 +119,24 @@ public class ComputationDivider {
 		// Get number of reactive packages
 		List<ResourceDTO> resources = packageDTO.getResources();
 		
+		
+		
 	}
 	
-	// TODO add package ID to resources and treatment 
-	
-	private int nbElements;
+	// TODO add functions to allow choosing two of them: nbResource, nbElements or nbPackages
 	
 	public List<ResourcePOJO> splitComputation(ResourcePOJO input){
 		List<ResourcePOJO> output = new ArrayList<ResourcePOJO>();
 		
 		int start = input.getLowerLimite().intValue();
 		int end = input.getUpperLimite().intValue();
-		int nbResources = nbPackages * 10;
+		int nbResources = nbPackages * nbElementsPerPackage;
 		
-		nbElements = 0;
+		int nbElements = 0;
 		if ((end - start) % nbResources == 0)
 			nbElements = (end - start) / nbResources;
 		else
 			nbElements = (end - start) / nbResources + 1;
-			
-	System.out.println("NB ELEMENTS: " + nbElements);
 		
 		while(start < end){
 			ResourcePOJO newResource = null;
@@ -147,7 +150,7 @@ public class ComputationDivider {
 					new Integer(start + nbElements -1),  
 					input.isComputationDone(), 
 					input.getPrimeNbs(), 
-					new Integer(-1));
+					null);
 			}
 			else {
 				newResource = new ResourcePOJO(
@@ -157,7 +160,7 @@ public class ComputationDivider {
 					new Integer(end),  
 					input.isComputationDone(), 
 					input.getPrimeNbs(), 
-					new Integer(-1));
+					null);
 			}
 			output.add(newResource);
 			start = start + nbElements;

@@ -2,7 +2,7 @@ package Logic.Application;
 
 import java.util.*;
 
-import Logic.Application.utils.IdGenerator;
+import utils.IdGenerator;
 
 /**
  * Pacakage to send to the subsystems

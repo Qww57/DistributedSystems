@@ -1,4 +1,4 @@
-package Logic.Application.utils;
+package utils;
 
 @SuppressWarnings("boxing")
 public class IdGenerator {

@@ -3,7 +3,7 @@ package Logic.Treatment;
 import java.util.ArrayList;
 import java.util.List;
 
-import Logic.Application.utils.IdGenerator;
+import utils.IdGenerator;
 
 public class ResourcePOJO {
 	

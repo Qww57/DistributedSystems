@@ -3,7 +3,7 @@ package Logic.Application;
 import java.util.ArrayList;
 import java.util.List;
 
-import Logic.Application.utils.IdGenerator;
+import utils.IdGenerator;
 /**
  * DTO object to be send to the subsystems using TCP
  * 

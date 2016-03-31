@@ -3,7 +3,7 @@ package Logic.Application;
 import java.util.ArrayList;
 import java.util.List;
 
-import Logic.Application.utils.IdGenerator;
+import utils.IdGenerator;
 
 public class TreatmentDTO extends AbstractDTO {
 	

@@ -10,6 +10,7 @@ import Logic.Application.PackageDTO;
 import Logic.Exposition.ClientDataRequest;
 import Logic.Treatment.ComputationDivider;
 import Logic.Treatment.ResourcePOJO;
+import utils.Printer;
 
 public class testComputationDivider {
 
@@ -21,7 +22,8 @@ public class testComputationDivider {
 				new Integer(1500));
 		
 		int numberOfElements = 12;
-		ComputationDivider comp = new ComputationDivider(numberOfElements);
+		int resourcePerPackage = 15;
+		ComputationDivider comp = new ComputationDivider(numberOfElements, resourcePerPackage);
 		
 		List<ResourcePOJO> resources = comp.splitComputation(pojo);
 		
@@ -34,7 +36,8 @@ public class testComputationDivider {
 		System.out.println("New test: ");
 		
 		numberOfElements = 10;
-		comp = new ComputationDivider(numberOfElements);
+		resourcePerPackage = 10;
+		comp = new ComputationDivider(numberOfElements, resourcePerPackage);
 		
 		resources = comp.splitComputation(pojo);
 		
@@ -47,32 +50,29 @@ public class testComputationDivider {
 	
 	@Test
 	public void testDivide(){
-		ClientDataRequest clientData = new ClientDataRequest(null, new Integer(0), new Integer(10));
+		ClientDataRequest clientData = new ClientDataRequest(null, new Integer(0), new Integer(500000000));
 		
-		int numberOfPackages = 2;
-		ComputationDivider comp = new ComputationDivider(numberOfPackages);
+		int numberOfPackages = 5000;
+		int resourcePerPackage = 15;
+		
+		long startTime = System.currentTimeMillis();
+		
+		ComputationDivider comp = new ComputationDivider(numberOfPackages, resourcePerPackage);
 		try {
 			List<PackageDTO> packages = comp.createPackages(clientData);
 			assertEquals(numberOfPackages, packages.size());	
-			for(int i = 0; i< packages.size(); i++){
-				printPackage(packages.get(i));
+			for(int i = 0; i < packages.size() - 1; i++){
+				assertEquals(resourcePerPackage, packages.get(i).getResources().size());
+				// Printer.print(packages.get(i));
 			}
-			assertTrue(true);
-		} 
-		catch (Exception e) {
+		}catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 			fail("Should not raised exception");
 		}
-	}
-	
-	private void printPackage(PackageDTO packagedto){
-		System.out.println("Package: " + packagedto.getPackageId() + " - " + packagedto.getResources().size());
-		for (int i = 0; i < packagedto.getResources().size(); i++){
-			System.out.println("Id: " + packagedto.getResources().get(i).getResourceId()
-				+ " - Min: " + packagedto.getResources().get(i).getLowerLimite()
-				+ " - Max: " + packagedto.getResources().get(i).getUpperLimite());
-		}
-		System.out.println("-----------");
+		
+		long endTime = System.currentTimeMillis();
+		long duration = (endTime - startTime);
+		System.out.println(duration + " ns ");
 	}
 }
