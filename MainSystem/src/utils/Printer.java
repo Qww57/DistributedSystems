@@ -3,6 +3,8 @@ package utils;
 import Logic.Application.PackageDTO;
 import Logic.Application.ResourceDTO;
 import Logic.Application.TreatmentDTO;
+import Logic.Treatment.ResourcePOJO;
+import Logic.Treatment.TreatmentPOJO;
 
 public class Printer {
 
@@ -19,6 +21,7 @@ public class Printer {
 				print(packagedto.getResources().get(i));
 			}
 		}
+		
 		else if (object instanceof ResourceDTO){
 			ResourceDTO resourceDTO = (ResourceDTO) object;
 			
@@ -29,11 +32,22 @@ public class Printer {
 				+ " assigned to " + resourceDTO.getAssignedSubSystem()
 				+ " in package " + resourceDTO.getPackageId());	
 		}
+		
 		else if (object instanceof TreatmentDTO){
 			TreatmentDTO treatment = (TreatmentDTO) object;
 			
 			System.out.println("Resource: " + treatment.getTreatmentID()
 				+ " split in packages: " + treatment.getPackageIds());
+		} 
+		
+		else if (object instanceof ResourcePOJO){
+			ResourcePOJO resourcePOJO = (ResourcePOJO) object;
+			resourcePOJO.printResource();
+		}
+		
+		else if (object instanceof TreatmentPOJO){
+			TreatmentPOJO treatmentPOJO = (TreatmentPOJO) object;
+			treatmentPOJO.printTreatment();
 		}
 		else{
 			System.out.println("No printer defined for object of type: " + object.getClass());

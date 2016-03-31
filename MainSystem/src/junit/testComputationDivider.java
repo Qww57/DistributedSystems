@@ -7,14 +7,18 @@ import java.util.List;
 import org.junit.Test;
 
 import Logic.Application.PackageDTO;
+import Logic.Application.ResourceDTO;
 import Logic.Exposition.ClientDataRequest;
+import Logic.Persistence.ResourceRepository;
+import Logic.Persistence.TreatmentRepository;
 import Logic.Treatment.ComputationDivider;
 import Logic.Treatment.ResourcePOJO;
 import utils.Printer;
 
+@SuppressWarnings({ "boxing", "unused" })
 public class testComputationDivider {
 
-	//@Test
+	@Test
 	public void testComputation(){
 		ResourcePOJO pojo = new ResourcePOJO( 
 				"Treatment",
@@ -50,10 +54,10 @@ public class testComputationDivider {
 	
 	@Test
 	public void testDivide(){
-		ClientDataRequest clientData = new ClientDataRequest(null, new Integer(0), new Integer(500000000));
+		ClientDataRequest clientData = new ClientDataRequest(null, new Integer(0), new Integer(50));
 		
-		int numberOfPackages = 5000;
-		int resourcePerPackage = 15;
+		int numberOfPackages = 5;
+		int resourcePerPackage = 2;
 		
 		long startTime = System.currentTimeMillis();
 		
@@ -63,7 +67,7 @@ public class testComputationDivider {
 			assertEquals(numberOfPackages, packages.size());	
 			for(int i = 0; i < packages.size() - 1; i++){
 				assertEquals(resourcePerPackage, packages.get(i).getResources().size());
-				// Printer.print(packages.get(i));
+				Printer.print(packages.get(i));
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -71,8 +75,38 @@ public class testComputationDivider {
 			fail("Should not raised exception");
 		}
 		
+		ResourceRepository.print();
+		TreatmentRepository.print();
+		
 		long endTime = System.currentTimeMillis();
 		long duration = (endTime - startTime);
 		System.out.println(duration + " ns ");
+	}
+
+	@Test
+	public void testAssign(){
+		ClientDataRequest clientData = new ClientDataRequest(null, new Integer(0), new Integer(10));
+		
+		int numberOfPackages = 1;
+		int resourcePerPackage = 5;
+		int subSystem = 10;
+		
+		long startTime = System.currentTimeMillis();
+		
+		ComputationDivider comp = new ComputationDivider(numberOfPackages, resourcePerPackage);
+		try {
+			List<PackageDTO> packages = comp.createPackages(clientData);		
+			comp.assignPackage(packages.get(0), subSystem);
+			Printer.print(packages.get(0));
+			
+			List<ResourceDTO> resources = packages.get(0).getResources();
+			for (int i = 0; i < resources.size(); i++){
+				ResourcePOJO res = ResourceRepository.getResourceById(resources.get(i).getResourceId());
+				assertEquals(subSystem, res.getAssignedSubsystem().intValue());
+			}
+			ResourceRepository.print();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }

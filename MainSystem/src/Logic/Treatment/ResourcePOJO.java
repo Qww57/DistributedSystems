@@ -9,6 +9,10 @@ public class ResourcePOJO {
 	
 	private String resourceId;
 	
+	private String treatmentId;
+	
+	private String packageId;
+	
 	private Integer upperLimite;
 	
 	private Integer lowerLimite;
@@ -19,11 +23,7 @@ public class ResourcePOJO {
 	
 	private List<Integer> primeNbs;
 	
-	private String treatmentId;
-	
 	private Integer assignedSubsystem;
-	
-	private String packageId;
 		
 	/* Assign value -1 to assigned subsystems when creating the object */
 	
@@ -43,15 +43,17 @@ public class ResourcePOJO {
 	public ResourcePOJO(String treatmentId, String resourceId, 
 			Integer lowerLimite, Integer upperLimite, 
 			Boolean computationDone,
-			List<Integer> primeNbs, Integer assignedSubsystem) {
+			List<Integer> primeNbs, Integer assignedSubsystem,
+			String packageId) {
 		super();
 		this.resourceId = resourceId;
+		this.treatmentId = treatmentId;
+		this.packageId = packageId;
 		this.upperLimite = upperLimite;
 		this.lowerLimite = lowerLimite;
 		this.computationDone = computationDone;
-		this.primeNbs = primeNbs;
-		this.treatmentId = treatmentId;
 		this.assignedSubsystem = assignedSubsystem;
+		this.primeNbs = primeNbs;
 		this.deleted = Boolean.FALSE;
 	}
 
@@ -143,8 +145,11 @@ public class ResourcePOJO {
 	}
 	
 	public void printResource(){
-		System.out.println("Resource " + this.resourceId 
-				+ " - Treatment " + this.treatmentId 
-				+ " from " + this.lowerLimite + " to " + this.upperLimite);
+		System.out.println("Resource: " + this.getResourceId()
+			+ " for treatment " + this.getTreatmentId()
+			+ " from " + this.getLowerLimite()
+			+ " to " +this.getUpperLimite()
+			+ " assigned to " + this.getAssignedSubsystem()
+			+ " in package " + this.getPackageId());
 	}
 }

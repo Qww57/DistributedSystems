@@ -20,6 +20,13 @@ public class PackageDTO extends AbstractDTO {
 	
 	private String packageId;
 
+	public PackageDTO() {
+		super();
+		this.resources =  null;
+		this.treatment = null;
+		this.packageId = IdGenerator.packageDTOId();
+	}
+	
 	public PackageDTO(List<ResourceDTO> resources, TreatmentDTO treatment) {
 		super();
 		this.resources = resources;

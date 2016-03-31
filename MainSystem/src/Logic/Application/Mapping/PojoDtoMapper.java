@@ -28,7 +28,8 @@ public class PojoDtoMapper {
 				input.getUpperLimite(),  
 				input.isComputationDone(), 
 				input.getPrimeNbs(), 
-				new Integer(-1));
+				input.getAssignedSubSystem(),
+				input.getPackageId());
 		return output;
 	}
 	

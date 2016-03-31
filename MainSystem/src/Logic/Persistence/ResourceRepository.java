@@ -8,6 +8,7 @@ import com.wagnerandade.coollection.query.order.Order;
 import static com.wagnerandade.coollection.Coollection.*;
 
 import Logic.Treatment.ResourcePOJO;
+import utils.Printer;
 
 /**
  * 
@@ -15,27 +16,21 @@ import Logic.Treatment.ResourcePOJO;
  *
  */
 
-@SuppressWarnings("boxing")
 public class ResourceRepository {
 	
 	private static List<ResourcePOJO> resourceDb = new ArrayList<ResourcePOJO>();
 	
-	public void add(ResourcePOJO resource){
-		resourceDb.add(resource);
-	}
-	
-	public static void update(ResourcePOJO resource){
+	public static void createUpdate(ResourcePOJO resource){
 		ResourcePOJO resDb = getResourceById(resource.getResourceId());
-		resourceDb.remove(resDb);
-		
+		if (resDb != null){
+			resourceDb.remove(resDb);
+		}
 		resourceDb.add(resource);
 	}
 	
 	public static ResourcePOJO getResourceById(String id){
-		System.out.println("Looking for resource: " + id);
 		List<ResourcePOJO> results = from(resourceDb)
-				.where("resourceId", eq(id))
-				.all();
+				.where("getResourceId", eq(id)).all();
 		
 		if (results.size() == 0){
 			System.out.println("Warning: no resource found for the id: " + id);
@@ -51,8 +46,8 @@ public class ResourceRepository {
 	}
 	
 	public static List<ResourcePOJO> getAllResourcesByTreatment(String treatmentId){
-		List<ResourcePOJO> results = from(resourceDb).where("treatmentId", eq(treatmentId))
-				.orderBy("lowerLimite", Order.ASC).all();
+		List<ResourcePOJO> results = from(resourceDb).where("getTreatmentId", eq(treatmentId))
+				.orderBy("getLowerLimite", Order.ASC).all();
 		if (results.size() == 0){
 			System.out.println("Warning: no resources found for the treatment: " + treatmentId);
 			return null;
@@ -60,67 +55,11 @@ public class ResourceRepository {
 		return results;
 	}
 	
-	public static List<ResourcePOJO> getAllResourcesNotTreated (Integer treatmentId) throws Exception{
-		
-		List<ResourcePOJO> results = new ArrayList<ResourcePOJO>();
-		
-		if (treatmentId != null){
-			results = from(resourceDb).where("computationDone", eq(Boolean.FALSE))
-					.and("treatmentId", eq(treatmentId))
-					.orderBy("lowerLimite", Order.ASC).all();
-			
-			if (results.size() == 0)
-				throw new Exception("All resources have been treated for: " + treatmentId);
-			
-		}else {
-			results = from(resourceDb).where("computationDone", eq(Boolean.FALSE))
-					.orderBy("lowerLimite", Order.ASC).all();
-		
-			if (results.size() == 0)
-				throw new Exception("No resources have already been treated");
-		}
-		
-		return results;
-	}
-	
-	public List<ResourcePOJO> getAllResourcesTreated (Integer treatmentId) throws Exception{
-			
-		List<ResourcePOJO> results = new ArrayList<ResourcePOJO>();
-		
-		if (treatmentId != null){
-			results = from(resourceDb).where("computationDone", eq(Boolean.TRUE))
-					.and("treatmentId", eq(treatmentId))
-					.orderBy("lowerLimite", Order.ASC).all();
-			
-			if (results.size() == 0)
-				throw new Exception("No resources have already been treated for: " + treatmentId);
-			
-		}else {
-			results = from(resourceDb).where("computationDone", eq(Boolean.TRUE))
-					.orderBy("lowerLimite", Order.ASC).all();
-		
-			if (results.size() == 0){
-				System.out.println("No resources have already been treated");
-				return null;
-			}
-		}
-		
-		return results;
-	}
-
-	public void deleteResourcesByTreatment(String treatmentId){
-		
-		List<ResourcePOJO> results = from(resourceDb)
-				.where("treatmentId", eq(treatmentId))
-				.orderBy("lowerLimite", Order.ASC).all();
-		
-		if (results == null){
-			System.out.println("Nothing to delete");
-		}
-		else {
-			for (int i = 0; i < results.size(); i++){
-				results.get(i).setDeleted(true);
-			}
+	public static void print(){
+		System.out.println("");
+		System.out.println("ResourceRepository: ");
+		for (int i = 0; i < resourceDb.size(); i++){
+			Printer.print(resourceDb.get(i));
 		}
 	}
 }

@@ -7,7 +7,7 @@ import org.junit.*;
 
 import Logic.Application.utils.ConvertBytes;
 
-public class MethodTreatmentTest {
+public class testMethodTreatment {
 
 	byte[] treatment = null;
 	

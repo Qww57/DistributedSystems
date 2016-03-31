@@ -53,6 +53,11 @@ public class CommunicationController {
 		return subSystems;
 	}
 
+	/**
+	 * For testing purposes, should not be like this
+	 * 
+	 * @param reactiveSubSystems
+	 */
 	public void setReactiveSubSystems(HashMap<Integer, Boolean> reactiveSubSystems) {
 		subSystems = reactiveSubSystems;
 	}

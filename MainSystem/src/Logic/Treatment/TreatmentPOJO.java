@@ -66,4 +66,9 @@ public class TreatmentPOJO {
 	public void addPackageId(String packageId){
 		this.packagesId.add(packageId);
 	}
+	
+	public void printTreatment(){
+		System.out.println("Treatment: " + this.getTreatmentID()
+			+ " for packages " + this.getPackagesId().toString());
+	}
 }

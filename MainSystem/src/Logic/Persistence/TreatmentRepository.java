@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Logic.Treatment.TreatmentPOJO;
+import utils.Printer;
 
 public class TreatmentRepository {
 
 	private static List<TreatmentPOJO> treatmentDb= new ArrayList<TreatmentPOJO>();
 	
-	@SuppressWarnings("boxing")
-	public void addTreatment(TreatmentPOJO treatment){
+	public static void addTreatment(TreatmentPOJO treatment){
 		String id = treatment.getTreatmentID();
 		
 		if (getTreatmentById(id) != null){
@@ -24,8 +24,8 @@ public class TreatmentRepository {
 
 	public static TreatmentPOJO getTreatmentById(String id){
 		List<TreatmentPOJO> results = from(treatmentDb)
-				.where("treatmentID", eq(id))
-				.and("deleted", eq(Boolean.FALSE)).all();
+				.where("getTreatmentID", eq(id))
+				.and("isDeleted", eq(Boolean.FALSE)).all();
 		
 		if (results.size() == 0){
 			System.out.println("Warning: treatment " + id + " is not in the database");
@@ -39,14 +39,12 @@ public class TreatmentRepository {
 			return results.get(0);
 		}
 	}
-	
-	public static void deleteTreatmentById(String id){
-		TreatmentPOJO treatment = getTreatmentById(id);
-		if (treatment != null){
-			treatment.setDeleted(true);
-		} 
-		else {
-			System.out.println("Warning: treatment " + id + " was not in the database and could not be deleted");
-		}	
+		
+	public static void print(){
+		System.out.println("");
+		System.out.println("TreatmentRepository: ");
+		for (int i = 0; i < treatmentDb.size(); i++){
+			Printer.print(treatmentDb.get(i));
+		}
 	}
 }
