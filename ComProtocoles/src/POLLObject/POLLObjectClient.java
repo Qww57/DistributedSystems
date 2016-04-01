@@ -1,4 +1,4 @@
-package TCP;
+package POLLObject;
 
 import java.net.*;
 import java.io.*;
@@ -25,10 +25,10 @@ import java.io.*;
         } 
 }
 
-public class TCPClient1 {
+public class POLLObjectClient {
         
     public static void main(String[] args) throws ClassNotFoundException {
-        Objects one = new Objects("Name", "ID");
+    	String poll = "POLL";
         
         Socket s = null;
         boolean check = true;
@@ -42,14 +42,18 @@ public class TCPClient1 {
                 out.flush();
                 ObjectInputStream in = new ObjectInputStream(s.getInputStream());
                 
-                out.writeObject(one);
-                System.out.println("We have sent a message: "+ one.getName()+one.getID() );
-                TCP.Objects o = (TCP.Objects) in.readObject();
+                out.writeObject(poll);
+                System.out.println("We have sent a poll message");
                 
-                System.out.println("Recieved: "+ o.getName() + o.getID());
-                if(one.getID().equals(o.getID()))
-                    check =false;
+                Object o = in.readObject();
+                
+                if (o instanceof Objects){
+                	Objects object1 = (Objects) o;
                     
+                    System.out.println("Recieved: "+ object1.getName() + object1.getID());
+                    check =false;
+                }
+                
                 s.setSoTimeout(1000);
                 
             }catch(UnknownHostException e){

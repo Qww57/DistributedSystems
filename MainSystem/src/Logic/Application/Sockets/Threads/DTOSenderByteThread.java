@@ -1,4 +1,4 @@
-package Logic.Application.Sockets;
+package Logic.Application.Sockets.Threads;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -6,16 +6,17 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 
-import Logic.Application.AbstractDTO;
+import Logic.Application.CommunicationController;
+import Logic.Application.DataTransfertObjects.AbstractDTO;
 import Logic.Application.utils.ConvertBytes;
 
 
-public class DTOSenderThread extends Thread {
+public class DTOSenderByteThread extends Thread {
 	DataInputStream in;
 	DataOutputStream out;
 	Socket clientSocket;
 	
-	public DTOSenderThread(Socket aClientSocket){
+	public DTOSenderByteThread(Socket aClientSocket){
 		try{
 			System.out.println("NEW SERVER THREAD");
 			clientSocket = aClientSocket;

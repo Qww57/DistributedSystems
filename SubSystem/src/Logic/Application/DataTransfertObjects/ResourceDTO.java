@@ -1,9 +1,7 @@
-package Logic.Application;
+package Logic.Application.DataTransfertObjects;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import utils.IdGenerator;
 /**
  * DTO object to be send to the subsystems using TCP
  * 
@@ -31,33 +29,7 @@ public class ResourceDTO extends AbstractDTO {
 	private List<Integer> primeNbs;
 	
 	private Integer assignedSubSystem;
-	
-	public ResourceDTO(String treatmentId, Integer lowerLimite, Integer upperLimite) {
-		super();
-		this.treatmentId = treatmentId;
-		this.resourceId = IdGenerator.resourceDTOId();
-		this.upperLimite = upperLimite;
-		this.lowerLimite = lowerLimite;
-		this.computationDone = Boolean.FALSE;
-		this.primeNbs = new ArrayList<Integer>();	
-		this.setAssignedSubSystem(null);
-	}
-	
-	public ResourceDTO(String treatmentId, String resourceId, 
-			Integer lowerLimite, Integer upperLimite, 
-			Boolean computationDone, List<Integer> primeNbs,
-			String packageId, Integer assignedSubSystem) {
-		super();
-		this.resourceId = resourceId;
-		this.treatmentId = treatmentId;
-		this.setPackageId(packageId);
-		this.upperLimite = upperLimite;
-		this.lowerLimite = lowerLimite;
-		this.computationDone = computationDone;
-		this.primeNbs = primeNbs;
-		this.setAssignedSubSystem(assignedSubSystem);
-	}
-	
+		
 	public String getResourceId(){
 		return resourceId;
 	}

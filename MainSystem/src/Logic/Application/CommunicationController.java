@@ -1,4 +1,4 @@
-package Logic.Application.Sockets;
+package Logic.Application;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import Logic.Application.AbstractDTO;
+import Logic.Application.DataTransfertObjects.AbstractDTO;
 
 /**
  * Controler responsible of instanciating the servers and managing 
@@ -27,8 +27,7 @@ public class CommunicationController {
 	
 	/* TODO Waiting queue for the messages, provided by the Computation 
 	 * divider. Should also be used in the DTOSenderThread
-	 */
-	
+	 */	
 	public static List<AbstractDTO> getSendingQueue() {
 		return sendingQueue;
 	}
@@ -48,13 +47,13 @@ public class CommunicationController {
 	/* TODO Count the number of clients and deal with a ping pong to know
 	 * if they are still all there
 	 */
-	
 	public HashMap<Integer, Boolean> getSubSystems() {
 		return subSystems;
 	}
 
 	/**
-	 * For testing purposes, should not be like this
+	 * For testing purposes, reactive subSytems should not be set directly but should be
+	 * created from updates from the Ping-Pong kind messages
 	 * 
 	 * @param reactiveSubSystems
 	 */
@@ -87,6 +86,6 @@ public class CommunicationController {
 	
 /* Sending messages to clients */
 	
-	/* TODO Send messages to clients, intialize Servers etc
+	/* TODO Send messages to clients, initialize Servers etc
 	 */		
 }

@@ -1,4 +1,4 @@
-package TCP;
+package POLLObject;
 
 import java.net.*;
 import java.io.*;
@@ -6,7 +6,7 @@ import java.io.*;
  *
  * @author Ehsan
  */
-public class TCPServer1 {
+public class POLLObjectServer {
     public static void main(String[] args) {
         try{
             int serverPort = 1234;
@@ -36,13 +36,13 @@ class EchoThread extends Thread{
         }
         
         public void run(){
-            try {
+            try {               
+                Object o = in.readObject();
+                System.out.println("Received object of type: " + o.getClass());
                 
-                TCP.Objects o = (TCP.Objects) in.readObject();
-                System.out.println (o.getName() + o.getID());
+                Objects object = new Objects("Name", "ID");
+                out.writeObject(object);
                 
-                out.writeObject(o);
-                System.out.println (o.getClass());
             } catch (IOException ex) {
                 System.out.println("IOException: "+ ex.getMessage());
             } catch (ClassNotFoundException ex) {
@@ -50,6 +50,8 @@ class EchoThread extends Thread{
             }
             try{
                 clientSocket.close();
-            }catch(IOException e){System.out.println("IOException: "+ e.getMessage());}
+            }catch(IOException e){
+            	System.out.println("IOException: "+ e.getMessage());
+            }
         }
 }

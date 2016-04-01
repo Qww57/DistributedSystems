@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import org.junit.*;
 
 import Logic.Application.utils.ConvertBytes;
+import Logic.Exposition.TreatmentMethod;
 
 public class testMethodTreatment {
 

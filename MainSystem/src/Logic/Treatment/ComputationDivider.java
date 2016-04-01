@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import Logic.Application.PackageDTO;
-import Logic.Application.ResourceDTO;
-import Logic.Application.TreatmentDTO;
+import Logic.Application.DataTransfertObjects.PackageDTO;
+import Logic.Application.DataTransfertObjects.ResourceDTO;
+import Logic.Application.DataTransfertObjects.TreatmentDTO;
 import Logic.Application.Mapping.ClientPojoMapper;
 import Logic.Application.Mapping.PojoDtoMapper;
 import Logic.Exposition.ClientDataRequest;
 import Logic.Persistence.ResourceRepository;
 import Logic.Persistence.TreatmentRepository;
+import Logic.Treatment.Objects.ResourcePOJO;
+import Logic.Treatment.Objects.TreatmentPOJO;
 import utils.Couple;
 import utils.IdGenerator;
 
@@ -31,6 +33,8 @@ public class ComputationDivider {
 		nbPackages = packages;
 		nbElementsPerPackage = elementsPerPackage;
 	}
+	
+	/* TODO Add something in order to keep the first POJO from the client */
 	
 	/**
 	 * Function creating small packages and saving each resource in the list.

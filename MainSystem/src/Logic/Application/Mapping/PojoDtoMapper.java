@@ -1,9 +1,9 @@
 package Logic.Application.Mapping;
 
-import Logic.Application.ResourceDTO;
-import Logic.Application.TreatmentDTO;
-import Logic.Treatment.ResourcePOJO;
-import Logic.Treatment.TreatmentPOJO;
+import Logic.Application.DataTransfertObjects.ResourceDTO;
+import Logic.Application.DataTransfertObjects.TreatmentDTO;
+import Logic.Treatment.Objects.ResourcePOJO;
+import Logic.Treatment.Objects.TreatmentPOJO;
 
 public class PojoDtoMapper {
 

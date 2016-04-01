@@ -1,0 +1,3 @@
+Should contain sockets to:
+- send resources and receive results from SubSystems
+- send 'Ping pong' message every x minutes to see if they are alive

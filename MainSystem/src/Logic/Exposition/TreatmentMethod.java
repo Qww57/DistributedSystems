@@ -1,4 +1,4 @@
-package junit;
+package Logic.Exposition;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
  * @author Quentin
  *
  */
-public class TreatmentMethod implements Serializable {
+public class TreatmentMethod extends Treatment implements Serializable{
 		
 	private static final long serialVersionUID = 857218763908397452L;
 

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import Logic.Application.Sockets.Threads.DTOSenderByteThread;
+import Logic.Application.Sockets.Threads.DTOSenderObjectThread;
+
 /**
  * Class defining a server. In order to use it, a thread should be
  * added.
@@ -16,7 +19,8 @@ import java.net.Socket;
 public class ServerTemplate {
 	
 	public enum ThreadType {
-		DTOSender
+		DTOByteSender,
+		DTOObjectSender
 	}
 
 	private int id;
@@ -68,8 +72,11 @@ public class ServerTemplate {
 			while(true){
 				Socket clientSocket = listenSocket.accept();
 				switch (threadType){
-				case DTOSender: 
-					DTOSenderThread c0 = new DTOSenderThread(clientSocket);
+				case DTOByteSender: 
+					DTOSenderByteThread c0 = new DTOSenderByteThread(clientSocket);
+					break;
+				case DTOObjectSender: 
+					DTOSenderObjectThread c1 = new DTOSenderObjectThread(clientSocket);
 					break;
 				default:
 					break;

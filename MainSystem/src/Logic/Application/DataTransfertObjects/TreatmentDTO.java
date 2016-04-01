@@ -1,4 +1,4 @@
-package Logic.Application;
+package Logic.Application.DataTransfertObjects;
 
 import java.util.ArrayList;
 import java.util.List;

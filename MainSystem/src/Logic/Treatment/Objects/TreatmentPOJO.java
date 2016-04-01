@@ -1,4 +1,4 @@
-package Logic.Treatment;
+package Logic.Treatment.Objects;
 
 import java.util.ArrayList;
 import java.util.List;

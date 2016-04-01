@@ -1,11 +1,9 @@
-package Logic.Application;
+package Logic.Application.DataTransfertObjects;
 
 import java.util.*;
 
-import utils.IdGenerator;
-
 /**
- * Pacakage to send to the subsystems
+ * Package to send to the subsystems
  * 
  * @author Quentin
  *
@@ -19,25 +17,11 @@ public class PackageDTO extends AbstractDTO {
 	private TreatmentDTO treatment;
 	
 	private String packageId;
-
-	public PackageDTO() {
-		super();
-		this.resources =  null;
-		this.treatment = null;
-		this.packageId = IdGenerator.packageDTOId();
-	}
-	
-	public PackageDTO(List<ResourceDTO> resources, TreatmentDTO treatment) {
-		super();
-		this.resources = resources;
-		this.treatment = treatment;
-		this.packageId = IdGenerator.packageDTOId();
-	}
 	
 	public TreatmentDTO getTreatment() {
 		return treatment;
 	}
-
+	
 	public void setTreatment(TreatmentDTO treatment) {
 		this.treatment = treatment;
 	}

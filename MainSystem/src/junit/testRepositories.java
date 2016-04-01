@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import Logic.Persistence.ResourceRepository;
-import Logic.Treatment.ResourcePOJO;
+import Logic.Treatment.Objects.ResourcePOJO;
 
 public class testRepositories {
 

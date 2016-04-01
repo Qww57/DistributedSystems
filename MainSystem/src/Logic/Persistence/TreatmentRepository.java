@@ -6,7 +6,7 @@ import static com.wagnerandade.coollection.Coollection.from;
 import java.util.ArrayList;
 import java.util.List;
 
-import Logic.Treatment.TreatmentPOJO;
+import Logic.Treatment.Objects.TreatmentPOJO;
 import utils.Printer;
 
 public class TreatmentRepository {

@@ -1,12 +1,6 @@
 package Logic.Application.utils;
 
-import static org.junit.Assert.*;
-
 import java.io.*;
-
-import org.junit.*;
-
-import Logic.Application.DataTransfertObjects.ResourceDTO;
 
 public class ConvertBytes {
 	
@@ -74,21 +68,6 @@ public class ConvertBytes {
 		}
 		
 		return o;
-	}
-	
-	@SuppressWarnings("static-access")
-	@Test
-	public void testConvertBytes(){
-		ResourceDTO resourceDTO = new ResourceDTO("treat", new Integer(20), new Integer(50));
-	
-		byte[] bytes = this.ConvertToBytes(resourceDTO);
-		System.out.println(bytes);
-		
-		Object object = this.ConvertFromBytes(bytes);
-		ResourceDTO resource = (ResourceDTO) object;
-		System.out.println(resource);
-
-		assertEquals(50, resource.getUpperLimite().intValue());
 	}
 }
 

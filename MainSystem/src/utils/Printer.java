@@ -1,10 +1,10 @@
 package utils;
 
-import Logic.Application.PackageDTO;
-import Logic.Application.ResourceDTO;
-import Logic.Application.TreatmentDTO;
-import Logic.Treatment.ResourcePOJO;
-import Logic.Treatment.TreatmentPOJO;
+import Logic.Application.DataTransfertObjects.PackageDTO;
+import Logic.Application.DataTransfertObjects.ResourceDTO;
+import Logic.Application.DataTransfertObjects.TreatmentDTO;
+import Logic.Treatment.Objects.ResourcePOJO;
+import Logic.Treatment.Objects.TreatmentPOJO;
 
 public class Printer {
 

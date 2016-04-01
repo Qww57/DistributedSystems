@@ -5,9 +5,10 @@ import java.util.List;
 
 import com.wagnerandade.coollection.query.order.Order;
 
+import Logic.Treatment.Objects.ResourcePOJO;
+
 import static com.wagnerandade.coollection.Coollection.*;
 
-import Logic.Treatment.ResourcePOJO;
 import utils.Printer;
 
 /**

@@ -1,8 +1,9 @@
 package Logic.Application.Mapping;
 
+import Logic.Application.utils.ConvertBytes;
 import Logic.Exposition.ClientDataRequest;
-import Logic.Treatment.ResourcePOJO;
-import Logic.Treatment.TreatmentPOJO;
+import Logic.Treatment.Objects.ResourcePOJO;
+import Logic.Treatment.Objects.TreatmentPOJO;
 import utils.Couple;
 
 /**
@@ -14,7 +15,7 @@ import utils.Couple;
 public class ClientPojoMapper {
 	
 	public static Couple createPOJO(ClientDataRequest clientReq){
-		TreatmentPOJO treatment = new TreatmentPOJO(clientReq.getTreatment());
+		TreatmentPOJO treatment = new TreatmentPOJO(ConvertBytes.ConvertToBytes(clientReq.getTreatment()));
 		ResourcePOJO resource = new ResourcePOJO(treatment.getTreatmentID(), 
 				clientReq.getMinResources(), 
 				clientReq.getMaxResources());

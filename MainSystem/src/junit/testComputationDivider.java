@@ -6,13 +6,13 @@ import java.util.List;
 
 import org.junit.Test;
 
-import Logic.Application.PackageDTO;
-import Logic.Application.ResourceDTO;
+import Logic.Application.DataTransfertObjects.PackageDTO;
+import Logic.Application.DataTransfertObjects.ResourceDTO;
 import Logic.Exposition.ClientDataRequest;
 import Logic.Persistence.ResourceRepository;
 import Logic.Persistence.TreatmentRepository;
 import Logic.Treatment.ComputationDivider;
-import Logic.Treatment.ResourcePOJO;
+import Logic.Treatment.Objects.ResourcePOJO;
 import utils.Printer;
 
 @SuppressWarnings({ "boxing", "unused" })
