@@ -1,4 +1,4 @@
-package Logic.Application.Sockets;
+package Logic.Application.Sockets.Threads;
 
 public class PingPongThread extends Thread {
 
