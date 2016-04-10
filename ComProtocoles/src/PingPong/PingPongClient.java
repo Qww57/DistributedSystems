@@ -36,7 +36,7 @@ public class PingPongClient {
         Socket s = null;
         boolean check = true;
         
-         while(check)
+        
             try{
                 int serverPort = 1234;
                 
@@ -48,7 +48,7 @@ public class PingPongClient {
                 DataInputStream in = new DataInputStream(s.getInputStream());
                 //System.out.println("we are here 4");
                 
-               
+            while(check){   
                 //TCP.Objects o = (TCP.Objects) in.readObject();
                 in.readUTF();
                 
@@ -58,7 +58,7 @@ public class PingPongClient {
                 out.writeUTF("PONG");
                 
                 System.out.println("We have sent response");
-                
+            }
                 /*
                 
                 if(one.getID().equals(o.getID()))
