@@ -30,6 +30,7 @@ public class ServerTemplate {
 	private String hostAddress;
 	private ServerSocket listenSocket = null;
 	private ThreadType threadType;
+	private Addresses subSystemAddress;
 	
 	public ServerTemplate(int id, String hostAddress, int serverPort, ThreadType thread) {
 		super();
@@ -67,6 +68,14 @@ public class ServerTemplate {
 		this.threadType = thread;
 	}
 	
+	public Addresses getSubSystemAddresses() {
+		return subSystemAddress;
+	}
+
+	public void setSubSystemAddresses(Addresses subSystemAddresses) {
+		this.subSystemAddress = subSystemAddresses;
+	}
+	
 	@SuppressWarnings("unused")
 	public void startServer(){
 		try {
@@ -81,7 +90,7 @@ public class ServerTemplate {
 					DTOSenderObjectThread c1 = new DTOSenderObjectThread(clientSocket);
 					break;
 				case PingPongThread:
-					PingPongThread c2 = new PingPongThread(clientSocket);
+					PingPongThread c2 = new PingPongThread(clientSocket, subSystemAddress);
 				default:
 					break;
 				}

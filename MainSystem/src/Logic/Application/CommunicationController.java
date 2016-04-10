@@ -3,6 +3,8 @@ package Logic.Application;
 import java.util.*;
 import java.util.Map.Entry;
 import Logic.Application.DataTransfertObjects.AbstractDTO;
+import Logic.Application.Sockets.Addresses;
+
 import java.io.*;
 import java.net.*;
 
@@ -16,7 +18,12 @@ import java.net.*;
 public class CommunicationController {
 	
 	/* True if reactive, false if not */
-	private static HashMap<Integer, Boolean> subSystems = new HashMap<Integer, Boolean>();
+	private static HashMap<Integer, Boolean> subSystems ;	
+	static{
+		subSystems = new HashMap<Integer, Boolean>();
+		subSystems.put(new Integer(0), Boolean.FALSE);
+		subSystems.put(new Integer(1), Boolean.FALSE);
+    }
 	
 	private static List<AbstractDTO> sendingQueue = new LinkedList<AbstractDTO>();
 
@@ -41,9 +48,6 @@ public class CommunicationController {
 
 /* Managing the available subSystems */
 	
-	/* TODO Count the number of clients and deal with a ping pong to know
-	 * if they are still all there
-	 */
 	public HashMap<Integer, Boolean> getSubSystems() {
 		return subSystems;
 	}
@@ -54,11 +58,12 @@ public class CommunicationController {
 	 * 
 	 * @param reactiveSubSystems
 	 */
-	public void setReactiveSubSystems(HashMap<Integer, Boolean> reactiveSubSystems) {
+	public static void setReactiveSubSystems(HashMap<Integer, Boolean> reactiveSubSystems) {
 		subSystems = reactiveSubSystems;
 	}
 
-	public void updateStatus(Integer subSystem, Boolean status){
+	public static void updateStatus(Integer subSystem, Boolean status){
+		System.out.println("Update status of subsystem " + subSystem.toString() + " to " + status.toString());
 		subSystems.put(subSystem, status);
 	}
 	
