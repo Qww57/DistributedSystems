@@ -30,7 +30,7 @@ public class ServerTemplate {
 	private String hostAddress;
 	private ServerSocket listenSocket = null;
 	private ThreadType threadType;
-	private Addresses subSystemAddress;
+	private Address subSystemAddress;
 	
 	public ServerTemplate(int id, String hostAddress, int serverPort, ThreadType thread) {
 		super();
@@ -68,11 +68,11 @@ public class ServerTemplate {
 		this.threadType = thread;
 	}
 	
-	public Addresses getSubSystemAddresses() {
+	public Address getSubSystemAddresses() {
 		return subSystemAddress;
 	}
 
-	public void setSubSystemAddresses(Addresses subSystemAddresses) {
+	public void setSubSystemAddresses(Address subSystemAddresses) {
 		this.subSystemAddress = subSystemAddresses;
 	}
 	

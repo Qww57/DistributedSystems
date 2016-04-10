@@ -3,10 +3,6 @@ package Logic.Application;
 import java.util.*;
 import java.util.Map.Entry;
 import Logic.Application.DataTransfertObjects.AbstractDTO;
-import Logic.Application.Sockets.Addresses;
-
-import java.io.*;
-import java.net.*;
 
 /**
  * Controler responsible of instanciating the servers and managing 

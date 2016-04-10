@@ -1,8 +1,13 @@
 package Logic.Application.Sockets;
 
-public class Addresses {
+/**
+ * Class used in order to store the sub systems informations
+ * It is composed of its host location, its port used to send DTO and its PingPong port to check his availability
+ *
+ */
+public class Address {
 		
-	public Addresses(String hostLocation, int DTO_Port, int PINGPONG_port) {
+	public Address(String hostLocation, int DTO_Port, int PINGPONG_port) {
 		super();
 		this.DTO_Port = DTO_Port;
 		this.PINGPONG_port = PINGPONG_port;

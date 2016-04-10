@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import Logic.Application.CommunicationController;
 import Logic.Application.Sockets.AddressBook;
-import Logic.Application.Sockets.Addresses;
+import Logic.Application.Sockets.Address;
 import Logic.Application.utils.TimeLimitedCodeBlock;
 
 public class PingPongThread extends Thread {
@@ -18,7 +18,7 @@ public class PingPongThread extends Thread {
      Socket clientSocket;
      Integer clientID;
          
-     public PingPongThread(Socket aClientSocket, Addresses address) throws IOException{
+     public PingPongThread(Socket aClientSocket, Address address) throws IOException{
          clientSocket = aClientSocket;
          in = new DataInputStream(clientSocket.getInputStream());
          out = new DataOutputStream(clientSocket.getOutputStream());
