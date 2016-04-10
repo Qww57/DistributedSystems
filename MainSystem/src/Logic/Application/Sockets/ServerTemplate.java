@@ -6,6 +6,7 @@ import java.net.Socket;
 
 import Logic.Application.Sockets.Threads.DTOSenderByteThread;
 import Logic.Application.Sockets.Threads.DTOSenderObjectThread;
+import Logic.Application.Sockets.Threads.PingPongThread;
 
 /**
  * Class defining a server. In order to use it, a thread should be
@@ -20,7 +21,8 @@ public class ServerTemplate {
 	
 	public enum ThreadType {
 		DTOByteSender,
-		DTOObjectSender
+		DTOObjectSender,
+		PingPongThread
 	}
 
 	private int id;
@@ -78,6 +80,8 @@ public class ServerTemplate {
 				case DTOObjectSender: 
 					DTOSenderObjectThread c1 = new DTOSenderObjectThread(clientSocket);
 					break;
+				case PingPongThread:
+					PingPongThread c2 = new PingPongThread(clientSocket);
 				default:
 					break;
 				}
