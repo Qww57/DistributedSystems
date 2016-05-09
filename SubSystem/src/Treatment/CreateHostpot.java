@@ -4,6 +4,15 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+/**
+ * Class used in order to but create a Hostpot using command lines. 
+ * FIXME Not working since it should be done using the command console
+ * as an administrator and we have not been able to spend enought time
+ * to fix it.
+ * 
+ * @author Quentin
+ *
+ */
 public class CreateHostpot {
 	
 	private String osName = System.getProperty("os.name");

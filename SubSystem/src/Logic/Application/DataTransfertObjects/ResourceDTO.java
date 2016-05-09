@@ -3,9 +3,9 @@ package Logic.Application.DataTransfertObjects;
 import java.util.List;
 
 /**
- * DTO object to be send to the subsystems using TCP
- * 
- * Only to use for test purposes while checking for prime numbers
+ * DTO object to be send to the subsystems using TCP. This specific implementation
+ * of a resource DTO has been done for test purposes while checking for prime numbers.
+ * A more general one could be imagined in case of other treatments.
  * 
  * @author Quentin
  *

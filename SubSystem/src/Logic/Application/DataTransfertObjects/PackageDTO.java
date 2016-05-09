@@ -3,7 +3,13 @@ package Logic.Application.DataTransfertObjects;
 import java.util.*;
 
 /**
- * Package to send to the subsystems
+ * Package to send to the subsystems containing the computations. 
+ * It can also contain a treatment method in case of a dynamic transmission of 
+ * the treatment functions. However due to technological limitations on grid 
+ * computing we have not been able to find a way to unwrap these computation 
+ * properly on the server side without getting java unknown class exceptions.
+ * The private field treatment is so actually not used, but remains here in case 
+ * a solution could be found.
  * 
  * @author Quentin
  *

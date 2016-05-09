@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Stores the addresses of the sub systems linked to our main server
+ * Stores the {@link Address} of the sub systems linked to our main server
  * 
  */
 public class AddressBook {

@@ -1,3 +1,4 @@
+package junit;
 import org.junit.Test;
 
 import Logic.Application.DataTransfertObjects.PackageDTO;

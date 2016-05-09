@@ -5,6 +5,14 @@ import java.util.List;
 
 import utils.IdGenerator;
 
+/**
+ * This class is the POJO object related to {@link TreatmentDTO}.
+ * This class is finally not used. See reasons in the treatment DTO 
+ * description.
+ * 
+ * @author Quentin
+ *
+ */
 public class TreatmentPOJO {
 	
 	private String treatmentID;

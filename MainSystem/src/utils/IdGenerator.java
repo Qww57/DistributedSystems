@@ -1,5 +1,11 @@
 package utils;
 
+/**
+ * Class used in order to generate different IDs for each type of element.
+ * 
+ * @author Quentin
+ *
+ */
 @SuppressWarnings("boxing")
 public class IdGenerator {
 

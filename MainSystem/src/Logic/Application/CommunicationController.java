@@ -6,8 +6,8 @@ import Logic.Application.DataTransfertObjects.AbstractDTO;
 import utils.Printer;
 
 /**
- * Controler responsible of instanciating the servers and managing 
- * the communication to the different subsystems
+ * Controller responsible of instantiating the servers, using {@link ServerTemplate} and managing 
+ * the communication to the different subsystems. 
  * 
  * @author Quentin
  *

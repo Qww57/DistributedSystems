@@ -6,6 +6,12 @@ import Logic.Application.DataTransfertObjects.TreatmentDTO;
 import Logic.Treatment.Objects.ResourcePOJO;
 import Logic.Treatment.Objects.TreatmentPOJO;
 
+/**
+ * Class used in order to deal with different levels of console printing.
+ * 
+ * @author Quentin
+ *
+ */
 public class Printer {
 	
 	private static boolean log = true;

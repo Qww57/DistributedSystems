@@ -39,30 +39,41 @@ public class testServerDTO{
 		treatment = ConvertBytes.ConvertToBytes(treatmentMethod);
 	}
 	
+	/**
+	 * This test shows how the server DTO should behave. Some functions 
+	 * are explicitly present here, as assigning to sub systems, but it should 
+	 * be part of the communication controller later on.
+	 */
 	@Test
 	public void testSend(){
-		
+		// Creating a client request
 		ClientDataRequest clientData = new ClientDataRequest(treatment, new Integer(0), new Integer(50));
 		
+		// Initializing a computation divider
 		int numberOfPackages = 1;
-		int resourcePerPackage = 5;
-		
+		int resourcePerPackage = 5;		
 		ComputationDivider comp = new ComputationDivider(numberOfPackages, resourcePerPackage);
+	
 		try {
+			// Creating the list of packages from the client request
 			List<PackageDTO> packages = comp.createPackages(clientData);
+			
+			// Performing tests on it and printing it
 			assertEquals(numberOfPackages, packages.size());	
 			for(int i = 0; i < packages.size() - 1; i++){
 				assertEquals(resourcePerPackage, packages.get(i).getResources().size());
 				Printer.print(packages.get(i));
 			}
 			
-			// Assign it to the subsystem 1
+			// Assign it to the subsystem 1, and printing the DTO
 			Integer subSystem = new Integer(1);	
 			comp.assignPackage(packages.get(0), subSystem);
 			Printer.print(packages.get(0));
 			
+			// Adding to the sending queue
 			CommunicationController.addToSendingQueue(packages.get(0));
 			
+			// Instantiating the server in order to send them, abd starting it
 			ServerTemplate server = new ServerTemplate(0, "localhost", 7000, ThreadType.DTOObjectSender);
 			server.startServer();
 			

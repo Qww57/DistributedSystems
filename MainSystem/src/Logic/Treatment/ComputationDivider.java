@@ -18,7 +18,7 @@ import utils.Couple;
 import utils.IdGenerator;
 
 /**
- * Class used to split computations and assign each one to one subsystem
+ * Class used to split computations and to assign each of them to one subsystem.
  * 
  * @author Quentin
  *
@@ -29,6 +29,16 @@ public class ComputationDivider {
 	
 	private int nbElementsPerPackage;
 	
+	/**
+	 * Constructor of the computation divider. For the checking of prime 
+	 * numbers, there are three different factors involved:
+	 * - the size of one element, for instance 1 to 1000.
+	 * - the number of elements we want in one package, for instance 10.
+	 * - the number of packages we want to create.
+	 * 
+	 * @param packages
+	 * @param elementsPerPackage
+	 */
 	public ComputationDivider(int packages, int elementsPerPackage){
 		nbPackages = packages;
 		nbElementsPerPackage = elementsPerPackage;
@@ -38,10 +48,17 @@ public class ComputationDivider {
 	
 	/**
 	 * Function creating small packages and saving each resource in the list.
-	 * Each package of the list is composed of the treatment and 10 small pieces
+	 * 
+	 * As explained in the constructor, there are three parameters for these 
+	 * computations resources.
+	 * 
+	 * Based on the wanted number of packages and wanted number of elements
+	 * per package, the constructor will compute the size of one element and 
+	 * create the packages accordingly.
 	 * 
 	 * @param clientReq: resources sent by the client
-	 * @return list of packages that are composed of the treatment and some shuffled small pieces of resources
+	 * @return list of packages that are composed of the treatment and some shuffled small pieces 
+	 * 		   of resources
 	 * @throws Exception: if any problem
 	 */
 	public List<PackageDTO> createPackages(ClientDataRequest clientReq) throws Exception{
@@ -53,6 +70,7 @@ public class ComputationDivider {
 		TreatmentPOJO treatment = (TreatmentPOJO) couple.getObj1();
 		ResourcePOJO resource = (ResourcePOJO) couple.getObj2();
 		
+		// If they are not in the data base, then we perform treatment
 		if ((TreatmentRepository.getTreatmentById(treatment.getTreatmentID()) == null)
 			&& (ResourceRepository.getAllResourcesByTreatment(treatment.getTreatmentID()) == null)){
 			
@@ -112,12 +130,14 @@ public class ComputationDivider {
 				}
 			}
 		}	
-		
+		else {
+			// Don't do anything since the objects are already in the data base
+		}
 		return packages;
 	}
 	
 	/**
-	 * Assigning on package to one available subsystem. 
+	 * Assigning one package to one available subsystem. 
 	 * Used by the communication controller
 	 * 
 	 * @param packages
@@ -137,6 +157,8 @@ public class ComputationDivider {
 	}
 
 	/**
+	 * NOT USED
+	 * 
 	 * TODO add functions to allow choosing two of them: nbResource, nbElements or nbPackages
 	 * @param input
 	 * @return

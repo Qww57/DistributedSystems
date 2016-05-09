@@ -1,5 +1,11 @@
 package utils;
 
+/**
+ * Simple class used in order to store two elements together.
+ * 
+ * @author Quentin
+ *
+ */
 public class Couple{
 	
 	private Object obj1;

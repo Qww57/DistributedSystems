@@ -5,6 +5,13 @@ import java.util.List;
 
 import utils.IdGenerator;
 
+/** 
+ * POJO object representing a resource. This one is specifically designed for
+ * prime number checking as it is the case for {@link ResourceDTO}
+ * 
+ * @author Quentin
+ *
+ */
 public class ResourcePOJO {
 	
 	private String resourceId;

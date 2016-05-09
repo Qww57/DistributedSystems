@@ -28,39 +28,51 @@ import utils.Printer;
  */
 @SuppressWarnings({ "boxing", "unused" })
 public class testComputationDivider {
-
-	@Test
+	
+	/* Test created in order to use the splitComputation function that 
+	 * should take a resource POJO object and split it in different ones
+	 * 
+	 * Finally not used.
+	 */
+	//@Test
 	public void testComputation(){
+		
+		// Creating a new POJO resource
 		ResourcePOJO pojo = new ResourcePOJO( 
 				"Treatment",
 				new Integer(15), 
 				new Integer(1500));
 		
+		// Initializing the computation divider
 		int numberOfElements = 12;
 		int resourcePerPackage = 15;
 		ComputationDivider comp = new ComputationDivider(numberOfElements, resourcePerPackage);
 		
+		// Creating the list of split resources
 		List<ResourcePOJO> resources = comp.splitComputation(pojo);
 		
+		// Printing the results
 		System.out.println("SIZE:" + resources.size());
-		
 		for (int i = 0; i < resources.size(); i++){
 			resources.get(i).printResource();
 		}
 		
+		// Starting a second test
 		System.out.println("New test: ");
 		
+		// Changing parameters of the computation divider
 		numberOfElements = 10;
 		resourcePerPackage = 10;
 		comp = new ComputationDivider(numberOfElements, resourcePerPackage);
 		
+		// Creating the new list of split resources
 		resources = comp.splitComputation(pojo);
 		
+		// Printing the results
+		System.out.println("SIZE:" + resources.size());
 		for (int i = 0; i < resources.size(); i++){
 			resources.get(i).printResource();
 		}
-		
-		System.out.println("SIZE:" + resources.size());
 	}
 	
 	@Test
@@ -107,7 +119,7 @@ public class testComputationDivider {
 		ComputationDivider comp = new ComputationDivider(numberOfPackages, resourcePerPackage);
 		try {
 			List<PackageDTO> packages = comp.createPackages(clientData);		
-			comp.assignPackage(packages.get(0), subSystem);
+			comp.assignPackage(packages.get(0), subSystem); // should be done by
 			Printer.print(packages.get(0));
 			
 			List<ResourceDTO> resources = packages.get(0).getResources();
