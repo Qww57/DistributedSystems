@@ -9,6 +9,12 @@ import java.net.Socket;
 import Logic.Application.CommunicationController;
 import Logic.Application.DataTransfertObjects.AbstractDTO;
 
+/**
+ * Thread used in order to send DTO objects
+ * 
+ * @author Ali, Quentin
+ *
+ */
 public class DTOSenderObjectThread extends Thread {
 	ObjectInputStream in;
 	ObjectOutputStream out;
@@ -16,16 +22,14 @@ public class DTOSenderObjectThread extends Thread {
 	
 	public DTOSenderObjectThread(Socket aClientSocket){		
         try {
-        	System.out.println("NEW SERVER THREAD");
+        	System.out.println("NEW DTO SENDER SERVER THREAD");
         	clientSocket = aClientSocket;
             in = new ObjectInputStream(clientSocket.getInputStream());
             out = new ObjectOutputStream(clientSocket.getOutputStream());
             this.start(); 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
- 
 	}
 	
 	public void run(){

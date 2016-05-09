@@ -10,7 +10,12 @@ import Logic.Application.CommunicationController;
 import Logic.Application.DataTransfertObjects.AbstractDTO;
 import Logic.Application.utils.ConvertBytes;
 
-
+/**
+ * Thread used in order to send DTO objects as byte, finally not used.
+ * 
+ * @author Quentin
+ *
+ */
 public class DTOSenderByteThread extends Thread {
 	DataInputStream in;
 	DataOutputStream out;
@@ -18,7 +23,7 @@ public class DTOSenderByteThread extends Thread {
 	
 	public DTOSenderByteThread(Socket aClientSocket){
 		try{
-			System.out.println("NEW SERVER THREAD");
+			System.out.println("NEW DTO BYTE SERVER THREAD");
 			clientSocket = aClientSocket;
 			in = new DataInputStream(clientSocket.getInputStream());
 			out = new DataOutputStream(clientSocket.getOutputStream());

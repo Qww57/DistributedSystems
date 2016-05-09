@@ -15,7 +15,7 @@ import Logic.Treatment.Objects.TreatmentPOJO;
 public class Printer {
 	
 	private static boolean log = true;
-	private static boolean debug = false;
+	private static boolean debug = true;
 	
 	public static void log(String text){
 		if (log)
