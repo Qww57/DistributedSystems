@@ -1,1 +1,0 @@
-Folder containing a basic implementation for the ACK/NACK protocol.

@@ -5,9 +5,11 @@ import java.net.*;
 import utils.ConvertBytes;
 
 import java.io.*;
+import utils.SObject;
 
 /**
- * Example of sending and receiving of serializable objects using bytes
+ * Example of Client for sending and receiving of serializable objects by converting 
+ * to bytes which is used with {@link TCPServer}
  * 
  * @author Quentin Tresontani
  *

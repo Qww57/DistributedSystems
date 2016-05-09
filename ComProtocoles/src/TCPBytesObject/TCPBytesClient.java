@@ -1,11 +1,19 @@
+package TCPBytesObject;
+
 import java.io.*; 
 import java.net.*;
 
-class TCPClient {       
+/**
+ * Client for TCP bytes which is used with {@link TCPBytesServer} 
+ * which considers time out
+ *
+ */
+
+class TCPBytesClient {       
     private static Socket s;
     @SuppressWarnings("unused")
 	private static DataInputStream in = null;
-    private static DataOutputStream out = null;
+        private static DataOutputStream out = null;
     
     public static void main(String args[]) throws IOException, SocketException {   
     	

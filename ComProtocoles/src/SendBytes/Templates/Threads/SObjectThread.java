@@ -6,9 +6,14 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 
-import SendBytes.SObject;
+import utils.SObject;
 import utils.ConvertBytes;
 
+/**
+ * Implementation for SObject Thread which converts objects to bytes
+ * and send them back in case it receives a poll request
+ *
+ */
 
 public class SObjectThread extends Thread {
 	DataInputStream in;
@@ -23,7 +28,7 @@ public class SObjectThread extends Thread {
 			out = new DataOutputStream(clientSocket.getOutputStream());
 			this.start();
 		} catch (IOException e){
-			System.out.println("EchoThread: " + e.getMessage());
+			System.out.println("SObjectThread: " + e.getMessage());
 		}
 	}
 	

@@ -2,6 +2,10 @@ package utils;
 
 import java.util.concurrent.*;
 
+/** Class that apply the timeout constraints for processes
+ *
+ */
+
 public class TimeLimitedCodeBlock {
 
 	public static void runWithTimeout(final Runnable runnable, long timeout, TimeUnit timeUnit) throws Exception {

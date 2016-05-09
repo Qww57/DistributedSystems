@@ -1,13 +1,15 @@
-package Poll;
+package PollProtocol;
 
 import java.io.*;
 import java.net.*;
 import utils.*;
 
 /*
- * Server receiving the poll request and answering correctly
- */
-public class PollServer{
+ *  Server receiving the poll request and answering correctly
+ *  which is used with {@link PollPortClient}
+ */ 
+
+public class PollPortServer{
 	
 	/* Common port number called to get a specific port */
 	private static int portNumber = 9050;
@@ -20,8 +22,7 @@ public class PollServer{
 			listenSocket = new ServerSocket(serverPort);
 			while(true){
 				Socket clientSocket = listenSocket.accept();
-				@SuppressWarnings("unused")
-				EchoThread c = new EchoThread(clientSocket);
+				
 			}
 		} catch (IOException e){
 			System.out.println("Listen: " + e.getMessage());
@@ -42,19 +43,19 @@ public class PollServer{
 	}
 }
 
-class EchoThread extends Thread{
+class PollPortThread extends Thread{
 	DataInputStream in;
 	DataOutputStream out;
 	Socket clientSocket;
 	
-	public EchoThread(Socket aClientSocket){
+	public PollPortThread(Socket aClientSocket){
 		try{
 			clientSocket = aClientSocket;
 			in = new DataInputStream(clientSocket.getInputStream());
 			out = new DataOutputStream(clientSocket.getOutputStream());
 			this.start();
 		} catch (IOException e){
-			System.out.println("EchoThread: " + e.getMessage());
+			System.out.println("PollThread: " + e.getMessage());
 		}
 	}
 	

@@ -1,34 +1,18 @@
-package POLLObject;
+package TCPBytesObject;
 
 import java.net.*;
 import java.io.*;
-/**
+import utils.SObject;
+
+/** Client implementation to send and receive objects 
+ * which is used with {@link TCPObjectServer}
  *
  * @author Ehsan
  */
-
- class Objects implements Serializable{
-        String name;
-        String ID;
-    
-       public Objects(String name, String id){
-           this.name = name;
-           this.ID = id;
-       }
-     
-        public String getName(){
-            return this.name;
-        }
-        
-        public String getID(){
-            return this.ID;
-        } 
-}
-
-public class POLLObjectClient {
+public class TCPObjectClient {
         
     public static void main(String[] args) throws ClassNotFoundException {
-    	String poll = "POLL";
+        SObject one = new SObject("Name", "ID");
         
         Socket s = null;
         boolean check = true;
@@ -42,18 +26,14 @@ public class POLLObjectClient {
                 out.flush();
                 ObjectInputStream in = new ObjectInputStream(s.getInputStream());
                 
-                out.writeObject(poll);
-                System.out.println("We have sent a poll message");
+                out.writeObject(one);
+                System.out.println("We have sent a message: "+ one.getName()+one.getID() );
+                SObject o = (SObject) in.readObject();
                 
-                Object o = in.readObject();
-                
-                if (o instanceof Objects){
-                	Objects object1 = (Objects) o;
-                    
-                    System.out.println("Recieved: "+ object1.getName() + object1.getID());
+                System.out.println("Recieved: "+ o.getName() + o.getID());
+                if(one.getID().equals(o.getID()))
                     check =false;
-                }
-                
+                    
                 s.setSoTimeout(1000);
                 
             }catch(UnknownHostException e){

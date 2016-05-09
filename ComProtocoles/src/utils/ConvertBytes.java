@@ -2,6 +2,11 @@ package utils;
 
 import java.io.*;
 
+/** Class that converts objects to bytes 
+ *
+ * @author Ehsan
+ */
+
 public class ConvertBytes {
 	
 	public static byte[] ConvertToBytes(Object object){

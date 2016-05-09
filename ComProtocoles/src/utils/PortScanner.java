@@ -4,6 +4,11 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.*;
 
+/** Class that checks and gets free ports
+ *
+ * @author Ehsan
+ */
+
 public class PortScanner {
 
 	private static List<Integer> freePorts = new ArrayList<>();

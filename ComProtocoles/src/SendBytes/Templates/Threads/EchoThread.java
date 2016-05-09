@@ -6,8 +6,13 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 
-import SendBytes.SObject;
+import utils.SObject;
 import utils.ConvertBytes;
+/**
+ * Implementation for Echo Thread by using bytes
+ * This class start a threat and send back the exact message it receives
+ *
+ */
 
 public class EchoThread extends Thread{
 	DataInputStream in;

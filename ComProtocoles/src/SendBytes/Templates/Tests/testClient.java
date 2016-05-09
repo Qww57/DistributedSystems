@@ -2,7 +2,7 @@ package SendBytes.Templates.Tests;
 
 import org.junit.Test;
 
-import SendBytes.SObject;
+import utils.SObject;
 import SendBytes.Templates.Client;
 
 public class testClient {

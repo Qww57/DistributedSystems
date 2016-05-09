@@ -5,7 +5,7 @@ import java.net.*;
 
 import SendBytes.Templates.Threads.EchoThread;
 /**
- * Example of sending and receiving of serializable objects using bytes
+ * Server which is used with {@link TCPClient}
  * 
  * @author Quentin Tresontani
  *

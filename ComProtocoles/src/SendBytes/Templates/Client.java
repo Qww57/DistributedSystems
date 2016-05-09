@@ -12,6 +12,7 @@ import utils.TimeLimitedCodeBlock;
 
 /**
  * Class implementing a template for a TCP Client with POLL protocol
+ *  which is used with  {@link Server}
  * 
  * @author Quentin
  *

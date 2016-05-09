@@ -1,7 +1,15 @@
+package TCPBytesObject;
+
 import java.io.*; 
 import java.net.*;
 
-class TCPServer {    
+/**
+ * Server for TCP bytes which is used with {@link TCPBytesClient} 
+ * using bytes
+ *
+ */
+
+class TCPBytesServer {    
     
 	public static void main(String args[]) throws IOException {          
     

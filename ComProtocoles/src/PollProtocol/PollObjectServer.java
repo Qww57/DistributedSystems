@@ -1,12 +1,14 @@
-package POLLObject;
+package PollProtocol;
 
 import java.net.*;
 import java.io.*;
+import utils.SObject;
 /**
- *
+ * Server class which is used with {@link PollObjectClient}
+ * 
  * @author Ehsan
  */
-public class POLLObjectServer {
+public class PollObjectServer {
     public static void main(String[] args) {
         try{
             int serverPort = 1234;
@@ -14,7 +16,6 @@ public class POLLObjectServer {
             while(true){
                   Socket clientSocket = listenSocket.accept();
                   System.out.println("We have recieved a message from client!" );
-                  EchoThread c = new EchoThread(clientSocket);
                   System.out.println("We sent back echo message to the client!");
             }
         }catch(IOException e){System.out.println("Listen:"+ e.getMessage());}
@@ -22,13 +23,13 @@ public class POLLObjectServer {
     
 }
 
-class EchoThread extends Thread{
+class PollObjectThread extends Thread{
         ObjectInputStream in;
         ObjectOutputStream out;
         Socket clientSocket;
-        byte[] buffer=new byte[100];
         
-        public EchoThread(Socket aClientSocket) throws IOException{
+        
+        public PollObjectThread(Socket aClientSocket) throws IOException{
             clientSocket=aClientSocket;
             in = new ObjectInputStream(clientSocket.getInputStream());
             out = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -40,7 +41,7 @@ class EchoThread extends Thread{
                 Object o = in.readObject();
                 System.out.println("Received object of type: " + o.getClass());
                 
-                Objects object = new Objects("Name", "ID");
+                SObject object = new SObject("Name", "ID");
                 out.writeObject(object);
                 
             } catch (IOException ex) {

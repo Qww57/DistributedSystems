@@ -1,12 +1,16 @@
-package TCP;
+package TCPBytesObject;
 
 import java.net.*;
 import java.io.*;
-/**
+import utils.SObject;
+
+/** Server implementation to send and receive objects 
+ * which is used with {@link TCPObjectClient}
  *
  * @author Ehsan
  */
-public class TCPServer1 {
+
+public class TCPObjectServer {
     public static void main(String[] args) {
         try{
             int serverPort = 1234;
@@ -38,7 +42,7 @@ class EchoThread extends Thread{
         public void run(){
             try {
                 
-                TCP.Objects o = (TCP.Objects) in.readObject();
+                SObject o = (SObject) in.readObject();
                 System.out.println (o.getName() + o.getID());
                 
                 out.writeObject(o);

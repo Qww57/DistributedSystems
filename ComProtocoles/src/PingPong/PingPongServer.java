@@ -2,14 +2,14 @@ package PingPong;
 
 import java.net.*;
 import java.io.*;
-import java.util.HashMap;
 
 /**
- *
+ * Server that should be used with {@link PingPongClient}
+ * This class has a PingPongThread which extends Thread that 
+ * and checks availability of clients by sending messages and waiting reply
+ * 
  * @author Ehsan
  */
-
-
 
 public class PingPongServer {
     public static boolean check= true;
@@ -23,22 +23,18 @@ public class PingPongServer {
             ServerSocket listenSocket = new ServerSocket(serverPort);
             System.out.println("we are here");
             
-                //for(int i=1; i<=3; i++){
                       Socket clientSocket = listenSocket.accept();
                       PingPongThread c = new PingPongThread(clientSocket);
                       System.out.println("We sent a Ping...");
-                //}
             
         }catch(IOException e){System.out.println("Listen:"+ e.getMessage());}
     }
 }
 
-
 class PingPongThread extends Thread{
         DataInputStream in;
         DataOutputStream out;
         Socket clientSocket;
-        //byte[] buffer=new byte[1000];
         
         public PingPongThread(Socket aClientSocket) throws IOException{
             clientSocket=aClientSocket;
@@ -49,10 +45,7 @@ class PingPongThread extends Thread{
         
         public void run(){
             
-            try {
-                //HashMap<String, Boolean> SubSystems = new HashMap<>();
-                //Objects ping = new Objects("PING", "1");
-                
+            try {            
                     
                 while(true){ 
                     Thread.sleep(5000);
@@ -60,21 +53,12 @@ class PingPongThread extends Thread{
                     System.out.println("We have sent out a PING message to client");
                     clientSocket.setSoTimeout(2000);
                     in.readUTF();
-                    //TCP.Objects o = (TCP.Objects) in.readObject();
+                    
                     System.out.println ("We recieved a response from cilent");
-
                     System.out.println(Thread.currentThread().getState());
                     
-                    
                 }    
-                    /*
-                    if(o.getName().equals("PONG"))
-                        SubSystems.put(o.getID(), true);
-                    else
-                        SubSystems.put(o.getID(), false);
-                    */
-                    //System.out.println(SubSystems.get("1"));
-                    //System.out.println (o.getClass());
+                    
             } catch (IOException ex) {
                 System.out.println("IOException: "+ ex.getMessage() + " Subsystem is down");
             } catch (InterruptedException ex) {

@@ -1,4 +1,4 @@
-package Poll;
+package PollProtocol;
 
 import java.io.*;
 import java.net.*;
@@ -6,10 +6,10 @@ import java.util.concurrent.*;
 import utils.TimeLimitedCodeBlock;
 
 /* 
- * The one sending the poll request
- */
+ *  PollPort Client which is used with {@link PollPortServer}
+ */ 
 @SuppressWarnings("boxing")
-public class PollClient {
+public class PollPortClient {
 	
 	/* Port number used to call the server */
 	private static int portNumber;
@@ -26,7 +26,7 @@ public class PollClient {
 	public static void main(String args[]){
 		
 		/* Only for development purposes */
-		portNumber = PollServer.getPortNumber();
+		portNumber = PollPortServer.getPortNumber();
 		
 		try{
 			sendPoll();
