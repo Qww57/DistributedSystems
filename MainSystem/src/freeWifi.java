@@ -5,6 +5,11 @@ import Logic.Application.Sockets.ServerTemplate.ThreadType;
 import Presentation.MainController;
 import utils.Printer;
 
+/**
+ * Main class of the main server. Should be run as a java application.
+ * 
+ * @author Quentin
+ */
 public class freeWifi {
 
 	@SuppressWarnings("unused")

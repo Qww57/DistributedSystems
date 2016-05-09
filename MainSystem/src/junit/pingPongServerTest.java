@@ -8,7 +8,7 @@ import Logic.Application.Sockets.ServerTemplate;
 import Logic.Application.Sockets.ServerTemplate.ThreadType;
 
 /**
- * Simple test of a ping pong server, should be used with {@linkplain pingPongClientTest}. 
+ * Simple test of a ping pong server, should be used with {@link pingPongClientTest}. 
  * 
  * @author Quentin, Ali
  *

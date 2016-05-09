@@ -13,7 +13,7 @@ import Logic.Application.utils.TimeLimitedCodeBlock;
 /**
  * Class implementing a template for a TCP Client with POLL protocol
  * 
- * @author Quentin
+ * @author Quentin, Ali
  *
  */
 @SuppressWarnings({"hiding", "boxing", "static-access"})
@@ -147,7 +147,6 @@ public class ObjectClientTemplate {
 	}
 	
 	private void print(Object object, String string){
-		System.out.println("Client " + this.id + ": " + string + " " + (long) object);
-	}
-		
+		System.out.println("Client " + this.id + ": " + string + " " + (long) object);	
+	}		
 }
