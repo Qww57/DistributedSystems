@@ -1,7 +1,8 @@
 ComProtocoles/bin/*
 MainSystem/bin/*
+SubSystem/bin/*
 MainSystem/build/*
-PingPongT/build/*
+SubSystem/build/*
 *.project
 *.classpath
 ComProtocoles/src/Poll/PollClientWithSeq.java
