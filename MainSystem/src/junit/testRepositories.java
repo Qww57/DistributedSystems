@@ -7,6 +7,13 @@ import org.junit.Test;
 import Logic.Persistence.ResourceRepository;
 import Logic.Treatment.Objects.ResourcePOJO;
 
+/**
+ * Unit tests for the resource repository, by testing the creation and update of resources.
+ * 
+ * @author Quentin
+ *
+ */
+
 public class testRepositories {
 
 	@Test

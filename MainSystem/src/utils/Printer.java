@@ -7,6 +7,27 @@ import Logic.Treatment.Objects.ResourcePOJO;
 import Logic.Treatment.Objects.TreatmentPOJO;
 
 public class Printer {
+	
+	private static boolean log = true;
+	private static boolean debug = false;
+	
+	public static void log(String text){
+		if (log)
+			System.out.println(text);
+	}
+	
+	public static void debug(String text){
+		if (debug)
+			System.out.println(text);
+	}
+
+	public void setDebug(boolean debug) {
+		Printer.debug = log;
+	}
+
+	public void setLog(boolean log) {
+		Printer.log = log;
+	}
 
 	public static void print(Object object){
 		

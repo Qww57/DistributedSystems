@@ -11,11 +11,14 @@ import org.junit.Test;
 
 import Logic.Application.Sockets.AddressBook;
 
+/**
+ * Simple test of a ping pong client, should be used with {@linkplain pingPongServerTest}. 
+ * 
+ * @author Quentin, Ali
+ *
+ */
 public class pingPongClientTest {
 
-	/**
-	 *  Client running with the {@link pingPongServerTest}
-	 */
 	@Test
 	public void test() throws InterruptedException {		
 		System.out.println("Starting Client...");

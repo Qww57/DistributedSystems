@@ -15,6 +15,17 @@ import Logic.Treatment.ComputationDivider;
 import Logic.Treatment.Objects.ResourcePOJO;
 import utils.Printer;
 
+/**
+ * This test focuses on the {@link ComputationDivider} class. These tests try to reflect 
+ * what the behaviour of the computation divider should be. It should split computation 
+ * received from client in a given number of packages, save them in the data base using 
+ * the repository, put them in the waiting queue and finally assign them to subsystems.
+ * Please note that some of these functions are achieved with help of the communication 
+ * controller.
+ * 
+ * @author Quentin
+ *
+ */
 @SuppressWarnings({ "boxing", "unused" })
 public class testComputationDivider {
 

@@ -18,6 +18,17 @@ import Logic.Application.Sockets.ServerTemplate.ThreadType;
 import Logic.Application.utils.ConvertBytes;
 import utils.Printer;
 
+/**
+ * Test generating a DTO sending server, based on the thread {@link DTOSenderObjectThread} or
+ * {@link DTOSenderByteThread}. This server reflects also partially what the behaviour of the 
+ * {@link CommunicationController} should be, it should initialize a {@link ComputationDivider}, 
+ * use it in order to split resources between different subsystems -which will save them in the 
+ * data base using the repository and add them to the waiting queue. This tests then take the 
+ * first element of the queue in order to send it.
+ * 
+ * @author Quentin
+ *
+ */
 public class testServerDTO{
 	
 	byte[] treatment;

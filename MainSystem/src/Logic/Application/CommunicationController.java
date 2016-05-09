@@ -3,6 +3,7 @@ package Logic.Application;
 import java.util.*;
 import java.util.Map.Entry;
 import Logic.Application.DataTransfertObjects.AbstractDTO;
+import utils.Printer;
 
 /**
  * Controler responsible of instanciating the servers and managing 
@@ -25,9 +26,6 @@ public class CommunicationController {
 
 /* Managing the waiting queue */
 	
-	/* TODO Waiting queue for the messages, provided by the Computation 
-	 * divider. Should also be used in the DTOSenderThread
-	 */	
 	public static List<AbstractDTO> getSendingQueue() {
 		return sendingQueue;
 	}
@@ -58,9 +56,11 @@ public class CommunicationController {
 		subSystems = reactiveSubSystems;
 	}
 
-	public static void updateStatus(Integer subSystem, Boolean status){
-		System.out.println("Update status of subsystem " + subSystem.toString() + " to " + status.toString());
-		subSystems.put(subSystem, status);
+	public static void updateStatus(Integer subSystemID, Boolean status){
+		if (!status.equals(subSystems.get(subSystemID)))
+				Printer.log("Update status of subsystem " + subSystemID.toString() + " to " + status.toString());
+		
+		subSystems.put(subSystemID, status);
 	}
 	
 	/**

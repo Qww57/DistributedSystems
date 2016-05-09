@@ -10,6 +10,7 @@ import Logic.Application.CommunicationController;
 import Logic.Application.Sockets.AddressBook;
 import Logic.Application.Sockets.Address;
 import Logic.Application.utils.TimeLimitedCodeBlock;
+import utils.Printer;
 
 public class PingPongThread extends Thread {
     
@@ -23,7 +24,7 @@ public class PingPongThread extends Thread {
          in = new DataInputStream(clientSocket.getInputStream());
          out = new DataOutputStream(clientSocket.getOutputStream());
          clientID = AddressBook.getSubSystemID(address);        
-         System.out.println("New thread created for " + clientID +": " + address.getHost() + "/" + address.getPINGPONG_port());
+         Printer.log("New thread created for " + clientID +": " + address.getHost() + "/" + address.getPINGPONG_port());
          this.start(); 
      }
  
@@ -35,7 +36,7 @@ public class PingPongThread extends Thread {
     			 int msTimeOut = 2000;
     			 Thread.sleep(5000);                  			 
     			 out.writeUTF("PING");
-	             System.out.println("We have sent out a PING message to client: " + clientSocket.getLocalAddress() + " : " + i);
+	             Printer.debug("We have sent out a PING message to client: " + clientSocket.getLocalAddress() + " : " + i);
     			 
     			 TimeLimitedCodeBlock.runWithTimeout(new Runnable() {
  			        @Override
@@ -45,24 +46,24 @@ public class PingPongThread extends Thread {
  			        		if (data.equals("PONG"))
  			        			CommunicationController.updateStatus(clientID, Boolean.TRUE);			        		
  			        		out.writeUTF("PING");
- 			        		System.out.println ("We received a response from client " + clientSocket.getLocalAddress());
+ 			        		Printer.debug("We received a response from client " + clientSocket.getLocalAddress());
  						} catch (Exception e) {
- 							System.out.println("Exception: " + e.getMessage());
+ 							Printer.debug("Exception: " + e.getMessage());
  						}
  				    }}, msTimeOut, TimeUnit.MILLISECONDS);
 	                          
     		 } catch (IOException ex) {
-    			 System.out.println("IOException: "+ ex.getMessage() + " - Closing the thread");
+    			 Printer.debug("IOException: "+ ex.getMessage() + " - Closing the thread");
                  CommunicationController.updateStatus(clientID, Boolean.FALSE);
                  check = false;
                  
             } catch (InterruptedException ex) {
-                 System.out.println("InterruptedException: "+ ex.getMessage() + " - Closing the thread");
+            	Printer.debug("InterruptedException: "+ ex.getMessage() + " - Closing the thread");
                  CommunicationController.updateStatus(clientID, Boolean.FALSE);
                  check = false;
                  
     		} catch (Exception ex) {
-    			System.out.println("Client is not responding");
+    			Printer.log("Client is not responding");
     			CommunicationController.updateStatus(clientID, Boolean.FALSE);
              	continue;
 			}

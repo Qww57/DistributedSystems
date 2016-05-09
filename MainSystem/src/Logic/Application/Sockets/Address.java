@@ -1,9 +1,13 @@
 package Logic.Application.Sockets;
 
 /**
- * Class used in order to store the sub systems informations
- * It is composed of its host location, its port used to send DTO and its PingPong port to check his availability
+ * Class used in order to store the sub systems informations. For each subsystem,
+ * it is composed of:
+ * - its host location, 
+ * - its port used to send DTO 
+ * - its PingPong port to check his availability
  *
+ *	@author Quentin
  */
 public class Address {
 		

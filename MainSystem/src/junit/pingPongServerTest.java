@@ -7,6 +7,12 @@ import Logic.Application.Sockets.Address;
 import Logic.Application.Sockets.ServerTemplate;
 import Logic.Application.Sockets.ServerTemplate.ThreadType;
 
+/**
+ * Simple test of a ping pong server, should be used with {@linkplain pingPongClientTest}. 
+ * 
+ * @author Quentin, Ali
+ *
+ */
 public class pingPongServerTest {
               	
 	@Test

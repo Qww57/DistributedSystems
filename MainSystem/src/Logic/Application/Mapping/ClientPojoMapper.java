@@ -7,7 +7,8 @@ import Logic.Treatment.Objects.TreatmentPOJO;
 import utils.Couple;
 
 /**
- * Class used to map the Data from client into a treatment object
+ * Class used to map the Data from client, {@link ClientDataRequest}, into POJO object, 
+ * a {@link TreatmentPOJO} and a list of {@link ResourcePOJO}.
  * 
  * @author Quentin
  *
